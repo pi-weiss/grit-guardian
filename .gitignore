@@ -1,2 +1,37 @@
+# Byte-compiled files
+__pycache__/
+
+# Logs
+logs
+*.log
+
+# Distribution / packaging
+.Python
+build/
+dist/
+lib/
+sdist/
+var/
+wheels/
+share/python-wheels/
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+.cache
+.pytest-cache/
+
+# Sphinx documentation
+docs/_build/
+
+# Environments
+.env
+.envrc
+.venv
+.env/
+.venv/
+env.bak/
+venv.bak/
+
 # OS specific
 .DS_Store
