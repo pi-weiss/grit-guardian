@@ -14,6 +14,8 @@ sdist/
 var/
 wheels/
 share/python-wheels/
+.installed.cfg
+MANIFEST
 
 # Unit test / coverage reports
 .coverage
@@ -28,10 +30,29 @@ docs/_build/
 .env
 .envrc
 .venv
-.env/
-.venv/
+env/
+venv/
+ENV/
 env.bak/
 venv.bak/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py.cover
+.pytest_cache/
+cover/
 
 # OS specific
 .DS_Store
