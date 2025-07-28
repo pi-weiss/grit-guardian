@@ -5,7 +5,7 @@ description = "Terminal-based habit tracker"
 authors = [{ name = "Patrick Weiss", email = "patrick.weiss@iu-study.org" }]
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["click (>=8.2.1,<9.0.0)", "sphinx (>=8.2.3,<9.0.0)", "sphinxcontrib-mermaid (>=1.0.0,<2.0.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)"]
+dependencies = ["click (>=8.2.1,<9.0.0)", "sphinx (>=8.2.3,<9.0.0)", "sphinxcontrib-mermaid (>=1.0.0,<2.0.0)", "sphinx-copybutton (>=0.5.2,<0.6.0)", "sphinx-autobuild (>=2024.10.3,<2025.0.0)"]
 
 
 [build-system]

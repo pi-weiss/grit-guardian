@@ -1,4 +1,5 @@
 import sqlite3
+import shutil  # For high-level operations on files
 from pathlib import Path
 from datetime import datetime
 from typing import Optional, List, Dict, Any
@@ -108,7 +109,7 @@ class DatabaseManager:
             if conn:
                 conn.close()
 
-    def create_habit(self, name: str, task: str, periodicity: str) -> int:
+    def create_habit(self, name: str, task: str, periodicity: str) -> int | None:
         """Creates a new habit.
 
         Args:
@@ -120,10 +121,20 @@ class DatabaseManager:
             The ID of the created habit
 
         Raises:
-            sqlite3 Error XXXXXXXXXXX: if habit with same name already exists
+            sqlite3.IntegrityError: if habit with same name already exists
             ValueError: If periodicity is invalid
         """
-        pass
+        if periodicity not in ("daily", "weekly"):
+            raise ValueError(
+                f"Invalid periodicity: {periodicity}. Must be 'daily' or 'weekly'"
+            )
+
+        with self._get_connection() as conn:
+            cursor = conn.execute(
+                "INSERT INTO habits (name, task, periodicity) VALUES (?, ?, ?);",
+                (name, task, periodicity),
+            )
+            return cursor.lastrowid
 
     def get_habits(self) -> List[Dict[str, Any]]:
         """Gets all habits with their completion counts.
@@ -131,7 +142,22 @@ class DatabaseManager:
         Returns:
             List of habit dictionaries with completion information
         """
-        pass
+        with self._get_connection() as conn:
+            habits = conn.execute("""
+                SELECT
+                    h.id,
+                    h.name,
+                    h.periodicity,
+                    h.created_at,
+                    COUNT(c.id) as total_completions,
+                    MAX(c.completed_at) as last_completed
+                FROM habits h
+                LEFT JOIN completions c ON h.id = c.habit_id
+                GROUP BY h.id
+                ORDER BY h.created_at DESC
+            """).fetchall()
+
+            return [dict(habit) for habit in habits]
 
     def get_habit_by_name(self, name: str) -> Optional[Dict[str, Any]]:
         """Gets a specific habit by name.
@@ -142,7 +168,12 @@ class DatabaseManager:
         Returns:
             Habit dictionary or None if not found
         """
-        pass
+        with self._get_connection() as conn:
+            habit = conn.execute(
+                "SELECT * FROM habits WHERE name = ?;", (name,)
+            ).fetchone()
+
+            return dict(habit) if habit else None
 
     def delete_habit(self, name: str) -> bool:
         """Deletes a habit and all its completions.
@@ -153,11 +184,13 @@ class DatabaseManager:
         Returns:
             True if deleted, False if not found
         """
-        pass
+        with self._get_connection() as conn:
+            cursor = conn.execute("DELETE FROM habits WHERE name = ?;", (name,))
+            return cursor.rowcount > 0
 
     def add_completion(
         self, habit_name: str, completed_at: Optional[datetime] = None
-    ) -> int:
+    ) -> int | None:
         """Adds a completion record for a habit.
 
         Args:
@@ -165,9 +198,30 @@ class DatabaseManager:
             completed_at: Optional completion timestamp (defaults to now)
 
         Raises:
-            ValueError: If habit not found
+            ValueError: If habit not found or completion date is in the future
         """
-        pass
+        # Defaults to current timestamp if no date is provided
+        if completed_at is None:
+            completed_at = datetime.now()
+
+        # Validate that completion date is not in the future
+        if completed_at > datetime.now():
+            raise ValueError("Completion date cannot be in the future")
+
+        with self._get_connection() as conn:
+            # Get habit ID
+            habit = conn.execute(
+                "SELECT id FROM habits WHERE name = ?;", (habit_name,)
+            ).fetchone()
+
+            if not habit:
+                raise ValueError(f"Habit '{habit_name}' not found")
+
+            cursor = conn.execute(
+                "INSERT INTO completions (habit_id, completed_at) VALUES (?, ?)",
+                (habit["id"], completed_at),
+            )
+            return cursor.lastrowid
 
     def get_completions(
         self, habit_name: str, limit: Optional[int] = None
@@ -181,7 +235,21 @@ class DatabaseManager:
         Returns:
             List of completion timestamps, most recent first
         """
-        pass
+        with self._get_connection() as conn:
+            query = """
+                SELECT c.completed_at
+                FROM completions c
+                JOIN habits h ON c.habit_id = h.id
+                WHERE h.name = ? 
+                ORDER BY c.completed_at DESC
+            """
+
+            if limit:
+                query += f" LIMIT {limit}"
+
+            completions = conn.execute(query, (habit_name,)).fetchall()
+            # completed_at is already a datetime object due to PARSE_DECLTYPES
+            return [c["completed_at"] for c in completions]
 
     def backup_database(self) -> Path:
         """Creates a backup of the database.
@@ -189,11 +257,20 @@ class DatabaseManager:
         Returns:
             Path to the backup file
         """
-        pass
+        backup_path = self.db_path.with_suffix(".db.backup")
+        shutil.copy2(self.db_path, backup_path)
+        return backup_path
 
     def _restore_from_backup(self):
         """Restores database from backup if it exists."""
-        pass
+        backup_path = self.db_path.with_suffix(".db.backup")
+        if backup_path.exists():
+            shutil.copy2(backup_path, self.db_path)
+        else:
+            # If no backup exists, move corrupted database aside and create new one
+            corrupted_path = self.db_path.with_suffix(".db.corrupted")
+            shutil.move(str(self.db_path), str(corrupted_path))
+            self._init_database()
 
     def get_stats(self) -> Dict[str, Any]:
         """Gets overall statistics about habits and completions.
@@ -201,4 +278,25 @@ class DatabaseManager:
         Returns:
             Dictionary with statistics
         """
-        pass
+        with self._get_connection() as conn:
+            stats = {
+                "total_habits": conn.execute("SELECT COUNT(*) FROM habits;").fetchone()[
+                    0
+                ],
+                "total_completions": conn.execute(
+                    "SELECT COUNT(*) FROM completions;"
+                ).fetchone()[0],
+                "habits_by_periodicity": {},
+            }
+
+            # Get count by periodicity
+            periodicity_counts = conn.execute("""
+                SELECT periodicity, COUNT(*) as count
+                FROM habits
+                GROUP BY periodicity
+            """).fetchall()
+
+            for row in periodicity_counts:
+                stats["habits_by_periodicity"][row["periodicity"]] = row["count"]
+
+            return stats

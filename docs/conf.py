@@ -2,7 +2,7 @@ import os
 import sys
 
 sys.path.insert(
-    0, os.path.abspath("../..")
+    0, os.path.abspath("..")
 )  # Add the project directory to the Python path for autodoc
 
 # Configuration file for the Sphinx documentation builder.
@@ -22,6 +22,7 @@ author = "Patrick Weiss"
 
 extensions = [
     "sphinx.ext.autodoc",  # For docstrings support
+    "sphinx.ext.coverage",  # For auto-generating API documentation
     "sphinx.ext.napoleon",  # Pre-processing NumPy and Google style docstrings
     "sphinx.ext.viewcode",  # For adding links to highlighted source code
     "sphinx_copybutton",  # For adding a "copy" button to the right of code blocks

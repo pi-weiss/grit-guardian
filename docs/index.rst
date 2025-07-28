@@ -6,6 +6,9 @@
 Grit Guardian Documentation
 ===========================
 
+.. automodule:: grit_guardian.persistence.database_manager
+   :members:
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

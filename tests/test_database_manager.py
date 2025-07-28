@@ -38,7 +38,7 @@ class TestDatabaseManager:
             assert "completions" in table_names
 
     # https://docs.pytest.org/en/stable/how-to/skipping.html#skip
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_create_habit_success(self, temp_db):
         """Tests creating a habit successfully."""
         habit_id = temp_db.create_habit(
@@ -51,11 +51,11 @@ class TestDatabaseManager:
         # Verify habit was created
         habit = temp_db.get_habit_by_name("Wolf")
         assert habit is not None
-        assert habit["name"] == "Inner Wolf"
+        assert habit["name"] == "Wolf"
         assert habit["task"] == "Howl 10 minutes at the moon"
         assert habit["periodicity"] == "daily"
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_create_habit_duplicate_name(self, temp_db):
         """Tests that creating a habit with duplicate name fails."""
         temp_db.create_habit("Exercise", "Run", "daily")
@@ -63,7 +63,7 @@ class TestDatabaseManager:
         with pytest.raises(sqlite3.IntegrityError):
             temp_db.create_habit("Exercise", "Different task", "weekly")
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_create_habit_invalid_periodicity(self, temp_db):
         """Tests that invalid periodicity raises ValueError."""
         with pytest.raises(ValueError, match="Invalid periodicity"):
@@ -71,13 +71,13 @@ class TestDatabaseManager:
                 "Exercise", "Run", "yearly"
             )  # Will not accept lazyness
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_get_habits_empty(self, temp_db):
         """Tests getting habits when none exist."""
         habits = temp_db.get_habits()
         assert habits == []
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_get_habits_with_data(self, temp_db):
         """Tests getting all habits with completion counts."""
         # Create habit
@@ -88,6 +88,11 @@ class TestDatabaseManager:
 
         assert habit1_id > 0
         assert habit2_id > 0
+
+        # Add completions
+        temp_db.add_completion("Crazy")
+        temp_db.add_completion("Crazy")
+        temp_db.add_completion("Read")
 
         habits = temp_db.get_habits()
         assert len(habits) == 2
@@ -101,7 +106,7 @@ class TestDatabaseManager:
         assert crazy["last_completed"] is not None
         assert read["last_completed"] is not None
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_get_habit_by_name(self, temp_db):
         """Tests getting a specific habit by name"""
         temp_db.create_habit("Exercise", "Run", "daily")
@@ -114,7 +119,7 @@ class TestDatabaseManager:
         habit = temp_db.get_habit_by_name("NonExistent")
         assert habit is None
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_delete_habit(self, temp_db):
         """Tests deleteing a habit."""
         temp_db.create_habit("Exercise", "Run", "daily")
@@ -132,7 +137,7 @@ class TestDatabaseManager:
         deleted = temp_db.delete_habit("NonExistent")
         assert deleted is False
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_add_completion(self, temp_db):
         """Tests adding a completion to a habit."""
         temp_db.create_habit("Exercise", "Run", "daily")
@@ -146,7 +151,7 @@ class TestDatabaseManager:
         assert len(completions) == 1
         assert isinstance(completions[0], datetime)
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_add_completion_with_custom_date(self, temp_db):
         """Tests adding a completion with custom timestamp."""
         temp_db.create_habit("Exercise", "Run", "daily")
@@ -158,23 +163,23 @@ class TestDatabaseManager:
         assert len(completions) == 1
 
         # Test with custom date in the future
-        custom_date_in_future = datetime.now() - timedelta(days=1)
+        future_date = datetime.now() + timedelta(days=1)
 
-        with pytest.raises(ValueError, match="Date cannot be in the future"):
-            temp_db.add_completion("Exercise", custom_date_in_future)
+        with pytest.raises(ValueError, match="Completion date cannot be in the future"):
+            temp_db.add_completion("Exercise", future_date)
 
         # Compare timestamps without microseconds
         assert completions[0].replace(microsecond=0) == custom_date.replace(
             microsecond=0
         )
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_add_completion_nonexistent_habit(self, temp_db):
         """Tests that adding completion to non-existent habit fails."""
         with pytest.raises(ValueError, match="Habit 'NonExistent' not found"):
             temp_db.add_completion("NonExistent")
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_get_completions(self, temp_db):
         """Tests getting completions for a habit."""
         temp_db.create_habit("Exercise", "Run", "daily")
@@ -198,7 +203,7 @@ class TestDatabaseManager:
         assert len(limited) == 2
         assert limited == completions[:2]
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_foreign_key_constraint(self, temp_db):
         """Tests that foreign key constraints are enforced."""
         with temp_db._get_connection() as conn:
@@ -209,12 +214,12 @@ class TestDatabaseManager:
                     (9999, datetime.now()),
                 )
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_backup_database(self, temp_db):
         """Tests database backup functionality."""
         # Add some data
         temp_db.create_habit(
-            "Scarecrow", "Stand in the middle of a field for 1 hour", "weeekly"
+            "Scarecrow", "Stand in the middle of a field for 1 hour", "weekly"
         )
         temp_db.add_completion("Scarecrow")
 
@@ -228,7 +233,7 @@ class TestDatabaseManager:
         assert len(habits) == 1
         assert habits[0]["name"] == "Scarecrow"
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_get_stats(self, temp_db):
         """Tests getting database statistics."""
         # Empty stats
@@ -253,7 +258,7 @@ class TestDatabaseManager:
         assert stats["habits_by_periodicity"]["daily"] == 2
         assert stats["habits_by_periodicity"]["weekly"] == 1
 
-    @pytest.mark.skip(reason="Full DB logic not yet implemented.")
+    # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_default_path(self):
         """Tests that default paht follows XDG specification."""
         db = DatabaseManager()
@@ -265,7 +270,7 @@ class TestDatabaseManager:
             db.db_path.unlink()
 
 
-@pytest.mark.skip(reason="Full DB logic not yet implemented.")
+# @pytest.mark.skip(reason="Full DB logic not yet implemented.")
 class TestDatabaseCorruption:
     def test_restore_from_backup(self, temp_db):
         """Tests database restoration from backup."""
