@@ -81,18 +81,28 @@ class DatabaseManager:
                 ON completions(completed_at)
             """)
 
-    # AI-generated code: Check for validity
+    # AI-generated code
     @contextmanager
     def _get_connection(self):
         """Context manager for database connection."""
         conn = None
         try:
-            conn = sqlite3.connect(self.db_path, detect_types=sqlite3.PARSE_DECLTYPES)
+            # PRAGMA is specific to SQLite
+            # is used for db engine configuration
+            # and querying of internal state and metadata
+            # https://www.sqlite.org/pragma.html
+            conn = sqlite3.connect(
+                self.db_path, detect_types=sqlite3.PARSE_DECLTYPES
+            )  # Use PARSE_DECLTYPES in detect_types param to enable auto type conversion
             conn.row_factory = sqlite3.Row
             # Enable foreign key constraints for this connection
-            conn.execute("PRAGMA foreign_keys = ON")
+            conn.execute(
+                "PRAGMA foreign_keys = ON"
+            )  # By default, foreign keys are not enforced
             yield conn
             conn.commit()
+        # DatabaseError is the base exception class for all errors related to database interactions
+        # https://docs.python.org/3/library/sqlite3.html#sqlite3.DatabaseError
         except sqlite3.DatabaseError as e:
             if conn:
                 conn.rollback()
