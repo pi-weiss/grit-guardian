@@ -33,16 +33,16 @@ poetry install
 ### First Run
 
 1. **Initialize with sample data:**
-  ```bash
-  grit-guardian init
-  # or use the short alias
-  gg init
-  ```
+   ```bash
+   grit-guardian init
+   # or use the short alias
+   gg init
+   ```
 
 2. **View your habits:**
-  ```bash
-  gg list
-  ```
+   ```bash
+   gg list
+   ```
 
 3. **Check today's status:**
    ```bash
