@@ -157,6 +157,7 @@ class DatabaseManager:
                 SELECT
                     h.id,
                     h.name,
+                    h.task,
                     h.periodicity,
                     h.created_at,
                     COUNT(c.id) as total_completions,
