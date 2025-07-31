@@ -17,9 +17,7 @@ def cli_runner():
     return CliRunner()
 
 
-# Use monkeypatch for database isolation
-# Patch _get_default_db_path method with mock path
-# Built on top of Click's CliRunner
+# Monkey patching the default database path with mock path
 # See: https://docs.pytest.org/en/stable/how-to/monkeypatch.html
 @pytest.fixture
 def isolated_cli_runner(monkeypatch, temp_db):
@@ -38,7 +36,12 @@ def isolated_cli_runner(monkeypatch, temp_db):
     monkeypatch.setattr(
         "grit_guardian.persistence.database_manager.DatabaseManager._get_default_db_path",
         lambda self: temp_db,
-    )
+    )  # Replace _get_default_db_path instance method
+
+    import grit_guardian.cli
+
+    # Reset tracker to ensure clean state
+    grit_guardian.cli._tracker = None
 
     return CliRunner()
 
@@ -52,7 +55,7 @@ class TestCLIAdd:
             main, ["add", "Exercise", "Do 20 pushups", "daily"]
         )
 
-        assert result.exit_code == 0
+        assert result.exit_code == 0  # command completed successfully
         assert "✓ Added habit 'Exercise' (daily)" in result.output
 
     def test_add_habit_duplicate(self, isolated_cli_runner):
@@ -70,17 +73,17 @@ class TestCLIAdd:
         assert "already exists" in result.output
 
     def test_add_habit_invalid_periodicity(self, isolated_cli_runner):
-        """Test adding habit with invalid periodicity."""
+        """Tests adding habit with invalid periodicity."""
         result = isolated_cli_runner.invoke(
             main, ["add", "Exercise", "Do 20 pushups", "monthly"]
         )
 
         # Click should catch invalid choice
-        assert result.exit_code != 0
+        assert result.exit_code != 0  # Command completed successfully
         assert "Invalid value for" in result.output
 
     def test_add_habit_weekly(self, isolated_cli_runner):
-        """Test adding weekly habit."""
+        """Tests adding weekly habit."""
         result = isolated_cli_runner.invoke(
             main, ["add", "Weekly Review", "Plan the week", "weekly"]
         )
@@ -93,7 +96,7 @@ class TestCLIList:
     """Tests the 'list' command."""
 
     def test_list_empty(self, isolated_cli_runner):
-        """Test listing when no habits exist."""
+        """Tests listing when no habits exist."""
         result = isolated_cli_runner.invoke(main, ["list"])
 
         assert result.exit_code == 0
