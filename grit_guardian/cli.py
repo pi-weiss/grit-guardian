@@ -62,5 +62,16 @@ def delete(name):
             click.echo(f"✗ {str(e)}", err=True)
 
 
+@main.command()
+@click.argument("name")
+def complete(name):
+    """Marks a habit as completed"""
+    try:
+        get_tracker().complete_habit(name)
+        click.echo(f"✓ Completed '{name}'!")
+    except Exception as e:
+        click.echo(f"✗ {str(e)}", err=True)
+
+
 if __name__ == "__main__":
     main()
