@@ -152,3 +152,88 @@ class TestCLIDelete:
         assert result.exit_code == 0
         assert "✗" in result.output
         assert "not found" in result.output
+
+
+class TestCLIComplete:
+    """Tests the 'complete' command."""
+
+    def test_complete_habit_success(self, isolated_cli_runner):
+        """Tests successfully completing a habit."""
+        # Add habit first
+        isolated_cli_runner.invoke(main, ["add", "Exercise", "Do 20 pushups", "daily"])
+
+        # Complete it
+        result = isolated_cli_runner.invoke(main, ["complete", "Exercise"])
+
+        assert result.exit_code == 0
+        assert "✓ Completed 'Exercise'!" in result.output
+
+    def test_complete_nonexistent_habit(self, isolated_cli_runner):
+        """Tests completing non-existent habit."""
+        result = isolated_cli_runner.invoke(main, ["complete", "Nonexistent"])
+
+        assert result.exit_code == 0
+        assert "✗" in result.output
+        assert "not found" in result.output
+
+    def test_complete_habit_already_done(self, isolated_cli_runner):
+        """Tests completing habit that's already done today."""
+        # Add and complete habit
+        isolated_cli_runner.invoke(main, ["add", "Exercise", "Do 20 pushups", "daily"])
+        isolated_cli_runner.invoke(main, ["complete", "Exercise"])
+
+        # Try to complete again
+        result = isolated_cli_runner.invoke(main, ["complete", "Exercise"])
+
+        assert result.exit_code == 0
+        assert "✗" in result.output
+        assert "already been completed" in result.output
+
+
+class TestCLIStatus:
+    """Tests the 'status' command."""
+
+    def test_status_no_habits(self, isolated_cli_runner):
+        """Tests status when no habits exist."""
+        result = isolated_cli_runner.invoke(main, ["status"])
+
+        assert result.exit_code == 0
+        assert "📊 Today's Status" in result.output
+        assert "No habits found" in result.output
+
+    def test_status_with_pending_habits(self, isolated_cli_runner):
+        """Tests status with pending habits."""
+        isolated_cli_runner.invoke(main, ["add", "Exercise", "Do 20 pushups", "daily"])
+        isolated_cli_runner.invoke(main, ["add", "Reading", "Read 10 pages", "daily"])
+
+        result = isolated_cli_runner.invoke(main, ["status"])
+
+        assert result.exit_code == 0
+        assert "⏳ Pending:" in result.output
+        assert "Exercise" in result.output
+        assert "Reading" in result.output
+        assert "Progress: 0/2" in result.output
+
+    def test_status_with_completed_habits(self, isolated_cli_runner):
+        """Tests status with some completed habits."""
+        isolated_cli_runner.invoke(main, ["add", "Exercise", "Do 20 pushups", "daily"])
+        isolated_cli_runner.invoke(main, ["add", "Reading", "Read 10 pages", "daily"])
+        isolated_cli_runner.invoke(main, ["complete", "Exercise"])
+
+        result = isolated_cli_runner.invoke(main, ["status"])
+
+        assert result.exit_code == 0
+        assert "✅ Completed:" in result.output
+        assert "⏳ Pending:" in result.output
+        assert "Progress: 1/2" in result.output
+
+    def test_status_all_completed(self, isolated_cli_runner):
+        """Tests status when all habits are completed."""
+        isolated_cli_runner.invoke(main, ["add", "Exercise", "Do 20 pushups", "daily"])
+        isolated_cli_runner.invoke(main, ["complete", "Exercise"])
+
+        result = isolated_cli_runner.invoke(main, ["status"])
+
+        assert result.exit_code == 0
+        assert "🎉 All habits completed!" in result.output
+        assert "Progress: 1/1" in result.output

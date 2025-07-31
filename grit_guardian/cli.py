@@ -73,5 +73,11 @@ def complete(name):
         click.echo(f"✗ {str(e)}", err=True)
 
 
+@main.command()
+def status():
+    """Show today's habit status"""
+    pass
+
+
 if __name__ == "__main__":
     main()
