@@ -39,14 +39,27 @@ def add(name, task, periodicity):
 @main.command()
 def list():
     """Lists all habits."""
-    pass
+    habits = get_tracker().list_habits()
+    if not habits:
+        click.echo("No habits found. Add one with 'grit-guardian add'")
+        return
+
+    click.echo("\nYour Habits:")
+    click.echo("-" * 50)
+    for habit in habits:
+        click.echo(f"• {habit.name} - {habit.task} ({habit.periodicity.value})")
 
 
 @main.command()
 @click.argument("name")
 def delete(name):
     """Deletes a habit."""
-    pass
+    if click.confirm(f"Delete habit '{name}'?"):
+        try:
+            get_tracker().delete_habit(name)
+            click.echo(f"✓ Deleted habit '{name}'")
+        except Exception as e:
+            click.echo(f"✗ {str(e)}", err=True)
 
 
 if __name__ == "__main__":
