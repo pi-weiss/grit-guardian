@@ -140,7 +140,8 @@ class TestCLIDelete:
         result = isolated_cli_runner.invoke(main, ["delete", "Exercise"], input="n\n")
 
         assert result.exit_code == 0
-        assert "Aborted" in result.output
+        list_result = isolated_cli_runner.invoke(main, ["list"])
+        assert "Exercise" in list_result.output
 
     def test_delete_nonexistent_habit(self, isolated_cli_runner):
         """Tests deleting non-existent habit."""
