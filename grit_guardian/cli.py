@@ -2,6 +2,10 @@ import click
 
 from grit_guardian.core.habit_tracker import HabitTracker
 from grit_guardian.persistence.database_manager import DatabaseManager
+from grit_guardian.analytics.analytics import (
+    generate_weekly_view,
+    identify_struggled_habits,
+)
 
 _tracker = None
 
@@ -75,7 +79,7 @@ def complete(name):
 
 @main.command()
 def status():
-    """Show today's habit status"""
+    """Shows today's habit status"""
     status = get_tracker().get_status()
 
     click.echo("\n📊 Today's Status")
@@ -101,7 +105,7 @@ def status():
 
 @main.command()
 def streaks():
-    """View current streaks and completion rates for all habits."""
+    """Views current streaks and completion rates for all habits."""
     streaks_data = get_tracker().get_streaks()
 
     if not streaks_data:
@@ -127,6 +131,46 @@ def streaks():
     click.echo("📊 Overall Stats:")
     click.echo(f"   Total Active Streaks: {total_current_streak}")
     click.echo(f"   Average Completion Rate: {avg_completion_rate:.1f}%")
+
+
+@main.command()
+def weekly():
+    """Shows weekly progress view"""
+    habits = get_tracker().list_habits()
+    if not habits:
+        click.echo("No habits to display")
+        return
+
+    click.echo("\n📅 Weekly Progress")
+    click.echo("=" * 60)
+    click.echo(generate_weekly_view(habits))
+
+    # Show summary
+    click.echo("\n" + "-" * 60)
+    click.echo("✓ = Completed  |  ✗ = Missed  |  - = Future")
+
+
+@main.command()
+@click.option("--since", default=30, help="Days to analyze")
+def struggled(since):
+    """Shows habits you've struggled with"""
+    habits = get_tracker().list_habits()
+    struggled_habits = identify_struggled_habits(habits, since)
+
+    if not struggled_habits:
+        click.echo(f"\n🌟 Great job! No struggled habits in the last {since} days.")
+        click.echo("Keep up the excellent work!")
+    else:
+        click.echo(f"\n⚠️  Habits needing attention (last {since} days):")
+        click.echo("=" * 50)
+
+        for habit in struggled_habits:
+            percentage = habit["completion_rate"] * 100
+            click.echo(f"\n• {habit['name']}")
+            click.echo(f"  Completion rate: {percentage:.0f}%")
+            click.echo(f"  Missed: {habit['missed']} times")
+
+        click.echo("\n💡 Tip: Focus on one habit at a time to build momentum!")
 
 
 if __name__ == "__main__":

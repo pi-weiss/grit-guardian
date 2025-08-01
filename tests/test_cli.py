@@ -220,3 +220,54 @@ class TestCLIStreaks:
         assert "Longest Streak:" in result.output
         assert "Completion Rate:" in result.output
         assert "📊 Overall Stats:" in result.output
+
+
+class TestCLIWeekly:
+    """Tests the 'weekly' command."""
+
+    def test_weekly_no_habits(self, isolated_cli_runner):
+        """Tests weekly view with no habits."""
+        result = isolated_cli_runner.invoke(main, ["weekly"])
+
+        assert result.exit_code == 0
+        assert "No habits to display" in result.output
+
+    def test_weekly_with_habits(self, isolated_cli_runner):
+        """Tests weekly view with habits."""
+        isolated_cli_runner.invoke(main, ["add", "Exercise", "Do 20 pushups", "daily"])
+
+        result = isolated_cli_runner.invoke(main, ["weekly"])
+
+        assert result.exit_code == 0
+        assert "📅 Weekly Progress" in result.output
+        assert "Exercise" in result.output
+        assert "Mon | Tue | Wed | Thu | Fri | Sat | Sun" in result.output
+        assert "✓ = Completed  |  ✗ = Missed  |  - = Future" in result.output
+
+
+class TestCLIStruggled:
+    """Tests the 'struggled' command."""
+
+    def test_struggled_no_habits(self, isolated_cli_runner):
+        """Tests struggled habits when none exist."""
+        result = isolated_cli_runner.invoke(main, ["struggled"])
+
+        assert result.exit_code == 0
+        assert "🌟 Great job! No struggled habits" in result.output
+
+    def test_struggled_with_good_habits(self, isolated_cli_runner):
+        """Tests struggled habits when all habits are doing well."""
+        isolated_cli_runner.invoke(main, ["add", "Exercise", "Do 20 pushups", "daily"])
+        isolated_cli_runner.invoke(main, ["complete", "Exercise"])
+
+        result = isolated_cli_runner.invoke(main, ["struggled"])
+
+        assert result.exit_code == 0
+        assert "🌟 Great job! No struggled habits" in result.output
+
+    def test_struggled_custom_days(self, isolated_cli_runner):
+        """Tests struggled habits with custom day parameter."""
+        result = isolated_cli_runner.invoke(main, ["struggled", "--since", "14"])
+
+        assert result.exit_code == 0
+        assert "last 14 days" in result.output
