@@ -76,6 +76,32 @@ def complete(name):
 @main.command()
 def status():
     """Show today's habit status"""
+    status = get_tracker().get_status()
+
+    click.echo("\n📊 Today's Status")
+    click.echo("=" * 30)
+
+    if status["pending"]:
+        click.echo("\n⏳ Pending:")
+        for habit in status["pending"]:
+            click.echo(f"  • {habit.name}")
+
+    if status["completed"]:
+        click.echo("\n✅ Completed:")
+        for habit in status["completed"]:
+            click.echo(f"  • {habit.name}")
+
+    if not status["pending"] and not status["completed"]:
+        click.echo("\nNo habits found. Add one with 'grit-guardian add'")
+    else:
+        click.echo(f"\nProgress: {len(status['completed'])}/{status['total']}")
+        if len(status["completed"]) == status["total"] and status["total"] > 0:
+            click.echo("🎉 All habits completed!")
+
+
+@main.command()
+def streaks():
+    """View current streaks and completion rates for all habits."""
     pass
 
 
