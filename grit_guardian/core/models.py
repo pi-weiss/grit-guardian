@@ -70,7 +70,7 @@ class Habit:
         self.completions.sort(reverse=True)
 
     def get_streak(self) -> int:
-        """Calculate current streak based on periodicity."""
+        """Calculates current streak based on periodicity."""
         # Return 0 if no completions
         if not self.completions:
             return 0

@@ -6,23 +6,6 @@ from datetime import datetime, timedelta
 from grit_guardian.persistence.database_manager import DatabaseManager
 
 
-@pytest.fixture
-def temp_db():
-    """Creates a temporary database for testing."""
-    with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as f:
-        db_path = Path(f.name)
-
-    db = DatabaseManager(db_path)
-    yield db
-
-    # Mr DB Proper cleans the window sesh!
-    if db_path.exists():
-        db_path.unlink()
-    backup_path = db_path.with_suffix(".db.backup")
-    if backup_path.exists():
-        backup_path.unlink()
-
-
 class TestDatabaseManager:
     def test_database_creation(self, temp_db):
         """Tests that database and tables are created correctly."""

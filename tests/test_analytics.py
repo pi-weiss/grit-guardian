@@ -79,7 +79,7 @@ class TestCalculateStreak:
     def test_weekly_streak_year_boundary(self):
         """Tests weekly streak across year boundary."""
         # Use monkeypatch or just test the logic with specific dates
-        # For now, skip this test as it requires proper mocking framework
+        # For now, I skip this test as it requires proper mocking framework
         pytest.skip("Requires proper datetime mocking")
 
 

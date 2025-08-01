@@ -102,7 +102,31 @@ def status():
 @main.command()
 def streaks():
     """View current streaks and completion rates for all habits."""
-    pass
+    streaks_data = get_tracker().get_streaks()
+
+    if not streaks_data:
+        click.echo("No habits found. Add one with 'grit-guardian add'")
+        return
+
+    click.echo("\n🔥 Habit Streaks & Analytics")
+    click.echo("=" * 60)
+
+    for streak_info in streaks_data:
+        click.echo(f"\n📌 {streak_info['name']}")
+        click.echo(f"   Current Streak: {streak_info['current_streak']} days")
+        click.echo(f"   Longest Streak: {streak_info['longest_streak']} days")
+        click.echo(f"   Completion Rate: {streak_info['completion_rate']:.1f}%")
+
+    # Calculate total stats
+    total_current_streak = sum(s["current_streak"] for s in streaks_data)
+    avg_completion_rate = sum(s["completion_rate"] for s in streaks_data) / len(
+        streaks_data
+    )
+
+    click.echo("\n" + "-" * 60)
+    click.echo("📊 Overall Stats:")
+    click.echo(f"   Total Active Streaks: {total_current_streak}")
+    click.echo(f"   Average Completion Rate: {avg_completion_rate:.1f}%")
 
 
 if __name__ == "__main__":

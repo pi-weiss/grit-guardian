@@ -3,6 +3,11 @@ from datetime import datetime
 
 from ..persistence.database_manager import DatabaseManager
 from .models import Habit, Periodicity
+from ..analytics.analytics import (
+    calculate_streak,
+    calculate_longest_streak,
+    get_completion_rate,
+)
 
 
 class HabitNotFoundError(Exception):
@@ -265,3 +270,26 @@ class HabitTracker:
             "completed": today_completed,
             "total": len(habits),
         }
+
+    def get_streaks(self) -> List[Dict[str, Any]]:
+        """Gets streak analytics for all habits.
+
+        Returns:
+            List of dictionaries containing streak data for each habit
+        """
+        habits = self.list_habits()
+        return [
+            {
+                "name": habit.name,
+                "current_streak": calculate_streak(
+                    habit.completions, habit.periodicity.value
+                ),
+                "longest_streak": calculate_longest_streak(
+                    habit.completions, habit.periodicity.value
+                ),
+                "completion_rate": get_completion_rate(
+                    habit.created_at, habit.completions, habit.periodicity.value
+                ),
+            }
+            for habit in habits
+        ]

@@ -3,49 +3,6 @@ import pytest
 from grit_guardian.cli import main
 
 
-# CliRunner provided by click.testing module
-# See: https://click.palletsprojects.com/en/stable/testing/
-@pytest.fixture
-def cli_runner():
-    """Creates Click testing runner.
-
-    Returns:
-        Click CliRunner instance
-    """
-    from click.testing import CliRunner
-
-    return CliRunner()
-
-
-# Monkey patching the default database path with mock path
-# See: https://docs.pytest.org/en/stable/how-to/monkeypatch.html
-@pytest.fixture
-def isolated_cli_runner(monkeypatch, temp_db):
-    """Creates isolated Click testing runner with test database.
-
-    Args:
-        monkeypatch: Pytest monkeypatch fixture
-        temp_db: Temporary database path fixture
-
-    Returns:
-        Click CliRunner instance with isolated environment
-    """
-    from click.testing import CliRunner
-
-    # Mock database path for CLI
-    monkeypatch.setattr(
-        "grit_guardian.persistence.database_manager.DatabaseManager._get_default_db_path",
-        lambda self: temp_db,
-    )  # Replace _get_default_db_path instance method
-
-    import grit_guardian.cli
-
-    # Reset tracker to ensure clean state
-    grit_guardian.cli._tracker = None
-
-    return CliRunner()
-
-
 class TestCLIAdd:
     """Tests the 'add' command."""
 
@@ -237,3 +194,29 @@ class TestCLIStatus:
         assert result.exit_code == 0
         assert "🎉 All habits completed!" in result.output
         assert "Progress: 1/1" in result.output
+
+
+class TestCLIStreaks:
+    """Tests the 'streaks' command."""
+
+    def test_streaks_no_habits(self, isolated_cli_runner):
+        """Tests streaks when no habits exist."""
+        result = isolated_cli_runner.invoke(main, ["streaks"])
+
+        assert result.exit_code == 0
+        assert "No habits found" in result.output
+
+    def test_streaks_with_habits(self, isolated_cli_runner):
+        """Tests streaks display with habits."""
+        isolated_cli_runner.invoke(main, ["add", "Exercise", "Do 20 pushups", "daily"])
+        isolated_cli_runner.invoke(main, ["complete", "Exercise"])
+
+        result = isolated_cli_runner.invoke(main, ["streaks"])
+
+        assert result.exit_code == 0
+        assert "🔥 Habit Streaks & Analytics" in result.output
+        assert "📌 Exercise" in result.output
+        assert "Current Streak:" in result.output
+        assert "Longest Streak:" in result.output
+        assert "Completion Rate:" in result.output
+        assert "📊 Overall Stats:" in result.output
