@@ -1,5 +1,6 @@
 import click
 
+from grit_guardian.pet.pet import Pet
 from grit_guardian.core.habit_tracker import HabitTracker
 from grit_guardian.persistence.database_manager import DatabaseManager
 from grit_guardian.analytics.analytics import (
@@ -171,6 +172,61 @@ def struggled(since):
             click.echo(f"  Missed: {habit['missed']} times")
 
         click.echo("\n💡 Tip: Focus on one habit at a time to build momentum!")
+
+
+@main.command()
+def pet():
+    """View your Grit Guardian pet's status"""
+    pet = get_tracker().get_pet()
+
+    click.echo("\n🐉 Your Grit Guardian")
+    click.echo("=" * 40)
+    click.echo(pet.get_ascii_art())
+    click.echo("\n" + "-" * 40)
+    click.echo(f"Name: {pet.name}")
+    click.echo(f"Mood: {pet.current_mood.value.capitalize()}")
+    click.echo("\n" + pet.get_mood_message())
+
+    # Show tips based on mood
+    if pet.current_mood.value in ["sad", "worried"]:
+        click.echo("\n💡 Tip: Complete some habits to cheer up your pet!")
+    elif pet.current_mood.value == "ecstatic":
+        click.echo("\n⭐ Amazing work! Keep up the great consistency!")
+
+
+@main.command()
+def init():
+    """Initialize Grit Guardian with sample habits"""
+    click.echo("\n🐉 Welcome to Grit Guardian!\n")
+
+    if get_tracker().initialize_sample_data():
+        click.echo("✓ Created sample habits to get you started:")
+        habits = get_tracker().list_habits()
+        for habit in habits:
+            click.echo(f"  • {habit.name} - {habit.task}")
+
+        click.echo("\n🎯 Quick Start Guide:")
+        click.echo("  - View your habits: grit-guardian list")
+        click.echo('  - Complete a habit: grit-guardian complete "Morning Reading"')
+        click.echo("  - Check your pet: grit-guardian pet")
+        click.echo("  - See weekly progress: grit-guardian weekly")
+        click.echo("  - View your streaks: grit-guardian streaks")
+        click.echo("\nYour Guardian dragon is waiting to see your progress!")
+
+        # Show initial pet
+        pet = Pet()
+        click.echo("\n" + pet.get_ascii_art())
+        click.echo(f"\n{pet.name} says: Let's build great habits together! 🌟")
+    else:
+        click.echo("Grit Guardian is already initialized.")
+        click.echo("Use 'grit-guardian status' to see today's habits.")
+
+        # Show current stats instead
+        habits = get_tracker().list_habits()
+        if habits:
+            click.echo(f"\nYou have {len(habits)} habits tracked.")
+            pet = get_tracker().get_pet()
+            click.echo(f"Your pet's mood: {pet.current_mood.value.capitalize()}")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 
+from ..pet.pet import Pet
 from ..persistence.database_manager import DatabaseManager
 from .models import Habit, Periodicity
 from ..analytics.analytics import (
@@ -34,6 +35,7 @@ class HabitTracker:
             db_manager: DatabaseManager instance for persistence operations
         """
         self.db = db_manager  # To use DatabaseManager's methods
+        self.pet = Pet()  # Initialize the Grid Guardian pet
 
     def add_habit(self, name: str, task: str, periodicity: str) -> Habit:
         """Creates a new habit and saves it to the database.
@@ -293,3 +295,45 @@ class HabitTracker:
             }
             for habit in habits
         ]
+
+    def get_pet(self) -> Pet:
+        """Get the pet with its current mood based on habits performance.
+
+        Returns:
+            Pet instance with updated mood
+        """
+        # Get streak data to calculate pet mood
+        streaks_data = self.get_streaks()
+
+        # Update pet mood based on current performance
+        self.pet.calculate_mood(streaks_data)
+
+        return self.pet
+
+    def initialize_sample_data(self) -> bool:
+        """Seed database with sample habits if empty.
+
+        Returns:
+            True if sample data was created, False if habits already exist
+        """
+        # Check if there are already habits
+        if self.list_habits():
+            return False  # Already has habits
+
+        sample_habits = [
+            ("Morning Reading", "Read for 15 minutes", "daily"),
+            ("Exercise", "Physical activity for 30 minutes", "daily"),
+            ("Weekly Planning", "Review and plan upcoming week", "weekly"),
+            ("Learn Something New", "Spend time learning a new skill", "daily"),
+        ]
+
+        # Create each sample habit
+        for name, task, periodicity in sample_habits:
+            try:
+                self.add_habit(name, task, periodicity)
+            except Exception as e:
+                # If any habit fails to create, log but continue
+                print(f"Warning: Failed to create habit '{name}': {e}")
+                continue
+
+        return True
