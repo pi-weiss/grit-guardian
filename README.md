@@ -1,13 +1,17 @@
 # Grit Guardian 🐉
 
-Grit Guardian is a command-line interface (CLI) application written in Python designed to help you build and maintain (hopefully) positive habits directly from your terminal.
+Grit Guardian is a command-line habit tracking application that gamifies your routines with an interactive virtual companion (Guardian).
+Don't let your Guardian's mood get sour: stay consistent and build lasting habits!
 
+[![Tests](https://github.com/pi-weiss/grit-guardian/workflows/Tests/badge.svg)](https://github.com/pi-weiss/grit-guardian/actions)
+[![Coverage](https://codecov.io/gh/pi-weiss/grit-guardian/branch/main/graph/badge.svg)](https://codecov.io/gh/pi-weiss/grit-guardian)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads)
 [![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## ✨ Features
 
 - 📊 **Habit Tracking**: Track daily and weekly habits with completion timestamps
 - 🔥 **Streak Analytics**: Calculate current and longest streaks with completion rates
+- 🐉 **Virtual Companion**: Interactive Guardian with mood based on your performance
 - 📅 **Weekly Progress**: ASCII table showing week-at-a-glance habit completion
 - 📈 **Analytics Dashboard**: Identify struggling habits and track overall progress
 - 🎯 **Sample Data**: Quick-start with pre-configured habit examples
@@ -54,6 +58,11 @@ poetry install
    gg complete "Morning Reading"
    ```
 
+5. **Meet your Guardian:**
+   ```bash
+   gg pet
+   ```
+
 ## 📖 Usage Guide
 
 ### Core Commands
@@ -83,6 +92,19 @@ gg status
 gg streaks
 ```
 
+#### Analytics & Progress
+```bash
+# View weekly progress table
+gg weekly
+
+# Identify habits you're struggling with
+gg struggled
+gg struggled --since 14  # Check last 14 days
+
+# Visit your Guardian pet
+gg pet
+```
+
 #### Quick Reference
 ```bash
 # Get help for any command
@@ -91,50 +113,6 @@ gg add --help
 
 # Initialize sample data (first time only)
 gg init
-```
-## 🏗️ Architecture
-
-### Project Structure
-```
-grit_guardian/
-├── cli.py                    # Click-based command interface
-├── core/
-│   ├── models.py            # Data models (Habit, Periodicity)
-│   └── habit_tracker.py     # Business logic service
-├── persistence/
-│   └── database_manager.py  # SQLite database operations
-└── analytics/
-    └── analytics.py         # Streak calculations & analytics
-
-tests/
-├── conftest.py              # Shared test fixtures
-└── test_*.py               # Unit tests
-```
-
-### Key Components
-
-1. **CLI Layer**: Click-based command interface with rich formatting
-2. **Service Layer**: `HabitTracker` orchestrates business operations
-3. **Data Layer**: SQLite database with proper schema and constraints
-4. **Analytics Engine**: Functional programming approach for calculations
-
-### Database Schema
-
-```sql
-CREATE TABLE habits (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT UNIQUE NOT NULL,
-    task TEXT NOT NULL,
-    periodicity TEXT CHECK(periodicity IN ('daily', 'weekly')),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE completions (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    habit_id INTEGER NOT NULL,
-    completed_at TIMESTAMP NOT NULL,
-    FOREIGN KEY (habit_id) REFERENCES habits(id) ON DELETE CASCADE
-);
 ```
 
 ## 🔧 Configuration
