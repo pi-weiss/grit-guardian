@@ -221,7 +221,9 @@ def temp_db():
     """
     with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as tmp:
         db_path = Path(tmp.name)
-        yield db_path
+        db = DatabaseManager(db_path)
+        yield db
+
         # Cleanup after test
         if db_path.exists():
             db_path.unlink()

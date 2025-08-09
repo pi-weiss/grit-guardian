@@ -26,7 +26,7 @@ class Habit:
         """Validates habit data after initialization."""
         if not self.name or not self.name.strip():
             raise ValueError(
-                "Habit name cannot be emtpy"
+                "Habit name cannot be empty"
             )  # Invdalid for empty or whitespace value
 
         if not self.task or not self.task.strip():
