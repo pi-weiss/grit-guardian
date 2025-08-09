@@ -18,7 +18,7 @@ Features
 
 * 📊 **Habit Tracking**: Track daily and weekly habits with completion timestamps
 * 🔥 **Streak Analytics**: Calculate current and longest streaks with completion rates  
-* 🐉 **Virtual Companion**: Interactive Guardian dragon with mood based on your performance
+* 🐉 **Virtual Companion**: Interactive Guardian with mood based on your performance
 * 📅 **Weekly Progress**: ASCII table showing week-at-a-glance habit completion
 * 📈 **Analytics Dashboard**: Identify struggling habits and track overall progress
 * 🎯 **Sample Data**: Quick-start with pre-configured habit examples

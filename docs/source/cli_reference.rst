@@ -283,7 +283,7 @@ Display a weekly progress table showing completion patterns.
    Habit                | Mon | Tue | Wed | Thu | Fri | Sat | Sun
    ------------------------------------------------------------
    Morning Reading      |  ✓  |  ✓  |  ✗  |  ✓  |  -  |  -  |  -
-   Exercise            |  ✓  |  ✗  |  ✗  |  ✓  |  -  |  -  |  -
+   Exercise             |  ✓  |  ✗  |  ✗  |  ✓  |  -  |  -  |  -
 
    ------------------------------------------------------------
    ✓ = Completed  |  ✗ = Missed  |  - = Future
@@ -337,7 +337,7 @@ Identify habits with low completion rates that need attention.
 pet
 ~~~
 
-View your Guardian dragon and its current mood.
+View your Guardian and its current mood.
 
 **Syntax**:
 
@@ -423,7 +423,7 @@ Initialize Grit Guardian with sample habits for new users.
      - Check your pet: grit-guardian pet
      - See weekly progress: grit-guardian weekly
 
-   Your Guardian dragon is waiting to see your progress!
+   Your Guardian is waiting to see your progress!
 
 Exit Codes
 ----------

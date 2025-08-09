@@ -4,7 +4,7 @@ Installation
 Requirements
 ------------
 
-* Python 3.9 or higher
+* Python 3.11 or higher
 * Operating System: Linux, macOS, or Windows
 
 Installation Methods
@@ -28,7 +28,7 @@ For development or to get the latest features:
 
 .. code-block:: bash
 
-   git clone https://github.com/yourusername/grit-guardian.git
+   git clone https://github.com/pi-weiss/grit-guardian.git
    cd grit-guardian
    pip install poetry  # If you don't have Poetry installed
    poetry install

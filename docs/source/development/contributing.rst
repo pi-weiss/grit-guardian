@@ -9,7 +9,7 @@ Getting Started
 Prerequisites
 ~~~~~~~~~~~~~
 
-- Python 3.9 or higher
+- Python 3.11 or higher
 - Poetry for dependency management
 - Git for version control
 
@@ -20,7 +20,7 @@ Development Setup
 
    .. code-block:: bash
 
-      git clone https://github.com/yourusername/grit-guardian.git
+      git clone https://github.com/pi-weiss/grit-guardian.git
       cd grit-guardian
 
 2. **Install Poetry** (if not already installed):
