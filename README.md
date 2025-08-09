@@ -9,6 +9,7 @@ Don't let your Guardian's mood get sour: stay consistent and build lasting habit
 [![license: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## ✨ Features
 
+
 - 📊 **Habit Tracking**: Track daily and weekly habits with completion timestamps
 - 🔥 **Streak Analytics**: Calculate current and longest streaks with completion rates
 - 🐉 **Virtual Companion**: Interactive Guardian with mood based on your performance
