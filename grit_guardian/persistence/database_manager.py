@@ -31,7 +31,7 @@ class DatabaseManager:
         Args:
             db_path: Optional custom database path. If None, uses default XDG config location.
         """
-        self.db_path = Path(db_path) if db_path else self._get_default_db_path()
+        self.db_path = db_path or self._get_default_db_path()
         self._ensure_config_dir()
         self._init_database()
 

@@ -214,22 +214,17 @@ def isolated_cli_runner(monkeypatch, temp_db):
 
 @pytest.fixture
 def temp_db():
-    """Creates a temporary database file for testing.
+    """Create temporary database file for testing.
 
     Yields:
         Path object pointing to temporary database file
     """
     with tempfile.NamedTemporaryFile(suffix=".db", delete=False) as tmp:
         db_path = Path(tmp.name)
-        db = DatabaseManager(db_path)
-        yield db
-
+        yield db_path
         # Cleanup after test
         if db_path.exists():
             db_path.unlink()
-        backup_path = db_path.with_suffix(".db.backup")
-        if backup_path.exists():
-            backup_path.unlink()
 
 
 @pytest.fixture
