@@ -8,7 +8,6 @@
 
    .. autosummary::
    
-      Enum
       Pet
       PetMood
    

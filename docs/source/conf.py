@@ -81,7 +81,6 @@ html_theme_options = {
     "includehidden": True,
     "titles_only": False,
     "logo_only": False,
-    "display_version": True,
     "prev_next_buttons_location": "both",
     "style_external_links": True,
 }

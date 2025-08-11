@@ -9,15 +9,11 @@
    .. autosummary::
    
       adapt_datetime
-      contextmanager
       convert_datetime
    
    .. rubric:: Classes
 
    .. autosummary::
    
-      Any
       DatabaseManager
-      Path
-      datetime
    

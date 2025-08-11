@@ -16,12 +16,3 @@
       get_habit_analytics
       identify_struggled_habits
    
-   .. rubric:: Classes
-
-   .. autosummary::
-   
-      Any
-      date
-      datetime
-      timedelta
-   
