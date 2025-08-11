@@ -485,7 +485,7 @@ window.addEventListener("load", () => mermaid.run());
 <span class="sd">        Args:</span>
 <span class="sd">            db_path: Optional custom database path. If None, uses default XDG config location.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">db_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">db_path</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_default_db_path</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_path</span> <span class="o">=</span> <span class="n">db_path</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_default_db_path</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_config_dir</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_init_database</span><span class="p">()</span></div>
 
