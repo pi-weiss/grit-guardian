@@ -67,7 +67,6 @@ Community & Support
 -------------------
 
 * **Issues**: `GitHub Issues <https://github.com/pi-weiss/grit-guardian/issues>`_
-* **Discussions**: `GitHub Discussions <https://github.com/pi-weiss/grit-guardian/discussions>`_
 * **Source Code**: `GitHub Repository <https://github.com/pi-weiss/grit-guardian>`_
 
 Indices and tables

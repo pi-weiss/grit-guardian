@@ -109,6 +109,6 @@ Getting Help
 
 If you encounter issues:
 
-1. Check the `troubleshooting guide <https://github.com/yourusername/grit-guardian/issues>`_
-2. Search existing `GitHub issues <https://github.com/yourusername/grit-guardian/issues>`_
+1. Check the `troubleshooting guide <https://github.com/pi-weiss/grit-guardian/issues>`_
+2. Search existing `GitHub issues <https://github.com/pi-weiss/grit-guardian/issues>`_
 3. Create a new issue with details about your system and the error

@@ -328,5 +328,3 @@ Getting Help
 - Use ``--help`` with any command: ``gg add --help``
 - Check command-specific documentation in :doc:`cli_reference`
 - Report bugs on `GitHub Issues <https://github.com/pi-weiss/grit-guardian/issues>`_
-- Join discussions in `GitHub Discussions <https://github.com/pi-weiss/grit-guardian/discussions>`_
-
