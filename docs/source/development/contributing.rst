@@ -1,5 +1,5 @@
 Contributing Guide
-=================
+==================
 
 Thank you for your interest in contributing to Grit Guardian! This guide will help you get started.
 

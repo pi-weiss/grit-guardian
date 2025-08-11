@@ -25,6 +25,7 @@ CLI Module
    :members:
    :undoc-members:
    :show-inheritance:
+   :no-index:
 
 Core Modules
 ~~~~~~~~~~~~
@@ -36,6 +37,7 @@ Habit Tracker
    :members:
    :undoc-members:
    :show-inheritance:
+   :no-index:
 
 Models
 ^^^^^^
@@ -44,6 +46,7 @@ Models
    :members:
    :undoc-members:
    :show-inheritance:
+   :no-index:
 
 Persistence Module
 ~~~~~~~~~~~~~~~~~~
@@ -55,6 +58,7 @@ Database Manager
    :members:
    :undoc-members:
    :show-inheritance:
+   :no-index:
 
 Analytics Module
 ~~~~~~~~~~~~~~~~
@@ -63,6 +67,7 @@ Analytics Module
    :members:
    :undoc-members:
    :show-inheritance:
+   :no-index:
 
 Pet Module
 ~~~~~~~~~~
@@ -71,3 +76,4 @@ Pet Module
    :members:
    :undoc-members:
    :show-inheritance:
+   :no-index:

@@ -393,10 +393,12 @@ Initialize Grit Guardian with sample habits for new users.
 **Behavior**:
 - Only works if no habits exist
 - Creates 4 sample habits:
+
   - Morning Reading (daily)
   - Exercise (daily)
   - Weekly Planning (weekly)  
   - Learn Something New (daily)
+
 - Shows quick start guide
 - Displays initial pet state
 

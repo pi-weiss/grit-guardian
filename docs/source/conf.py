@@ -57,7 +57,7 @@ autodoc_default_options = {
 
 # Autosummary settings
 autosummary_generate = True
-autosummary_imported_members = True
+autosummary_imported_members = False
 
 # Intersphinx mapping
 intersphinx_mapping = {

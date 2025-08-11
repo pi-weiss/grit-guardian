@@ -61,15 +61,14 @@ Documentation Contents
    :caption: Development:
 
    development/contributing
-   development/testing
    development/architecture
 
 Community & Support
 -------------------
 
-* **Issues**: `GitHub Issues <https://github.com/yourusername/grit-guardian/issues>`_
-* **Discussions**: `GitHub Discussions <https://github.com/yourusername/grit-guardian/discussions>`_
-* **Source Code**: `GitHub Repository <https://github.com/yourusername/grit-guardian>`_
+* **Issues**: `GitHub Issues <https://github.com/pi-weiss/grit-guardian/issues>`_
+* **Discussions**: `GitHub Discussions <https://github.com/pi-weiss/grit-guardian/discussions>`_
+* **Source Code**: `GitHub Repository <https://github.com/pi-weiss/grit-guardian>`_
 
 Indices and tables
 ==================
@@ -77,22 +76,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-.. automodule:: grit_guardian.persistence.database_manager
-   :members:
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   usage
-   about
-
-Indices and Tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
