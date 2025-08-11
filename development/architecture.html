@@ -1,0 +1,971 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture Guide &mdash; Grit Guardian 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Contributing Guide" href="contributing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Grit Guardian
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#from-pypi-recommended">From PyPI (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#verify-installation">Verify Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#first-run">First Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#upgrading">Upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#uninstallation">Uninstallation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#common-issues">Common Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#initialize-with-sample-data">Initialize with Sample Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#basic-commands">Basic Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#list-your-habits">List Your Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#check-today-s-status">Check Today’s Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#complete-a-habit">Complete a Habit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#meet-your-pet">Meet Your Pet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#your-first-week">Your First Week</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#day-1-3-getting-started">Day 1-3: Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#day-4-7-building-streaks">Day 4-7: Building Streaks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#essential-commands-reference">Essential Commands Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#habit-management">Habit Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#tracking-progress">Tracking Progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quickstart.html#analytics-insights">Analytics &amp; Insights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#sample-workflow">Sample Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#tips-for-success">Tips for Success</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart.html#need-help">Need Help?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#core-concepts">Core Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#habits">Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#periodicity-types">Periodicity Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#your-guardian-companion">Your Guardian Companion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#habit-management">Habit Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#adding-habits">Adding Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#listing-habits">Listing Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#deleting-habits">Deleting Habits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#tracking-completions">Tracking Completions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#completing-habits">Completing Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#viewing-status">Viewing Status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#analytics-progress">Analytics &amp; Progress</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#streak-analytics">Streak Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#weekly-progress">Weekly Progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#identifying-struggles">Identifying Struggles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#pet-interaction">Pet Interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#checking-your-companion">Checking Your Companion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#understanding-pet-moods">Understanding Pet Moods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#data-storage">Data Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#sample-data">Sample Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#database-reset">Database Reset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#tips-best-practices">Tips &amp; Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#habit-design">Habit Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#tracking-strategy">Tracking Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#long-term-success">Long-term Success</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#common-workflows">Common Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#daily-routine">Daily Routine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#weekly-review">Weekly Review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#monthly-maintenance">Monthly Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#common-issues">Common Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../user_guide.html#performance-tips">Performance Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user_guide.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli_reference.html">CLI Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#main-command">Main Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#commands-overview">Commands Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#habit-management">Habit Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#progress-tracking">Progress Tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#analytics-insights">Analytics &amp; Insights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#detailed-command-reference">Detailed Command Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#add">add</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#list">list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#delete">delete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#complete">complete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#status">status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#streaks">streaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#weekly">weekly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#struggled">struggled</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#pet">pet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cli_reference.html#init">init</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#exit-codes">Exit Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#shell-completion">Shell Completion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#output-formats">Output Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cli_reference.html#performance-notes">Performance Notes</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/generated/grit_guardian.cli.html">grit_guardian.cli</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.cli.html#grit_guardian.cli.get_tracker"><code class="docutils literal notranslate"><span class="pre">get_tracker()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html">grit_guardian.core.habit_tracker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitNotFoundError"><code class="docutils literal notranslate"><span class="pre">HabitNotFoundError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitAlreadyExistsError"><code class="docutils literal notranslate"><span class="pre">HabitAlreadyExistsError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker"><code class="docutils literal notranslate"><span class="pre">HabitTracker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.__init__"><code class="docutils literal notranslate"><span class="pre">HabitTracker.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.add_habit"><code class="docutils literal notranslate"><span class="pre">HabitTracker.add_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.list_habits"><code class="docutils literal notranslate"><span class="pre">HabitTracker.list_habits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_habit"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.delete_habit"><code class="docutils literal notranslate"><span class="pre">HabitTracker.delete_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.complete_habit"><code class="docutils literal notranslate"><span class="pre">HabitTracker.complete_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_habit_streak"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_habit_streak()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_statistics"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_statistics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_status"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_streaks"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_streaks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_pet"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_pet()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.initialize_sample_data"><code class="docutils literal notranslate"><span class="pre">HabitTracker.initialize_sample_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html">grit_guardian.core.models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Periodicity"><code class="docutils literal notranslate"><span class="pre">Periodicity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Periodicity.DAILY"><code class="docutils literal notranslate"><span class="pre">Periodicity.DAILY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Periodicity.WEEKLY"><code class="docutils literal notranslate"><span class="pre">Periodicity.WEEKLY</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit"><code class="docutils literal notranslate"><span class="pre">Habit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.id"><code class="docutils literal notranslate"><span class="pre">Habit.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.name"><code class="docutils literal notranslate"><span class="pre">Habit.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.task"><code class="docutils literal notranslate"><span class="pre">Habit.task</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.periodicity"><code class="docutils literal notranslate"><span class="pre">Habit.periodicity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.created_at"><code class="docutils literal notranslate"><span class="pre">Habit.created_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.completions"><code class="docutils literal notranslate"><span class="pre">Habit.completions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.__post_init__"><code class="docutils literal notranslate"><span class="pre">Habit.__post_init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.from_db_row"><code class="docutils literal notranslate"><span class="pre">Habit.from_db_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.add_completion"><code class="docutils literal notranslate"><span class="pre">Habit.add_completion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.get_streak"><code class="docutils literal notranslate"><span class="pre">Habit.get_streak()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.is_completed_today"><code class="docutils literal notranslate"><span class="pre">Habit.is_completed_today()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.is_completed_this_week"><code class="docutils literal notranslate"><span class="pre">Habit.is_completed_this_week()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.__init__"><code class="docutils literal notranslate"><span class="pre">Habit.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html">grit_guardian.persistence.database_manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.adapt_datetime"><code class="docutils literal notranslate"><span class="pre">adapt_datetime()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.convert_datetime"><code class="docutils literal notranslate"><span class="pre">convert_datetime()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager"><code class="docutils literal notranslate"><span class="pre">DatabaseManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.__init__"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.create_habit"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.create_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.get_habits"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.get_habits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.get_habit_by_name"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.get_habit_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.delete_habit"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.delete_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.add_completion"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.add_completion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.get_completions"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.get_completions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.backup_database"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.backup_database()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.get_stats"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.get_stats()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/generated/grit_guardian.analytics.analytics.html">grit_guardian.analytics.analytics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.calculate_streak"><code class="docutils literal notranslate"><span class="pre">calculate_streak()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.calculate_longest_streak"><code class="docutils literal notranslate"><span class="pre">calculate_longest_streak()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.get_completion_rate"><code class="docutils literal notranslate"><span class="pre">get_completion_rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.get_habit_analytics"><code class="docutils literal notranslate"><span class="pre">get_habit_analytics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.generate_weekly_view"><code class="docutils literal notranslate"><span class="pre">generate_weekly_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.calculate_expected_completions"><code class="docutils literal notranslate"><span class="pre">calculate_expected_completions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.identify_struggled_habits"><code class="docutils literal notranslate"><span class="pre">identify_struggled_habits()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html">grit_guardian.pet.pet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood"><code class="docutils literal notranslate"><span class="pre">PetMood</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.ECSTATIC"><code class="docutils literal notranslate"><span class="pre">PetMood.ECSTATIC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.HAPPY"><code class="docutils literal notranslate"><span class="pre">PetMood.HAPPY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.CONTENT"><code class="docutils literal notranslate"><span class="pre">PetMood.CONTENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.SAD"><code class="docutils literal notranslate"><span class="pre">PetMood.SAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.WORRIED"><code class="docutils literal notranslate"><span class="pre">PetMood.WORRIED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet"><code class="docutils literal notranslate"><span class="pre">Pet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.__init__"><code class="docutils literal notranslate"><span class="pre">Pet.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.calculate_mood"><code class="docutils literal notranslate"><span class="pre">Pet.calculate_mood()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.get_ascii_art"><code class="docutils literal notranslate"><span class="pre">Pet.get_ascii_art()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.get_mood_message"><code class="docutils literal notranslate"><span class="pre">Pet.get_mood_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.__str__"><code class="docutils literal notranslate"><span class="pre">Pet.__str__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/modules.html#module-documentation">Module Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/modules.html#cli-module">CLI Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/modules.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/modules.html#habit-tracker">Habit Tracker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../api/modules.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/modules.html#persistence-module">Persistence Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../api/modules.html#database-manager">Database Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../api/modules.html#analytics-module">Analytics Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/modules.html#pet-module">Pet Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#development-setup">Development Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#development-workflow">Development Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#making-changes">Making Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#coding-standards">Coding Standards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#code-style">Code Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#type-hints">Type Hints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#testing">Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#test-structure">Test Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#writing-tests">Writing Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#test-coverage">Test Coverage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#commit-message-format">Commit Message Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-request-process">Pull Request Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#issue-reporting">Issue Reporting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#bug-reports">Bug Reports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#feature-requests">Feature Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#areas-for-contribution">Areas for Contribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#high-priority">High Priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#medium-priority">Medium Priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#low-priority">Low Priority</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#development-environment">Development Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#recommended-tools">Recommended Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#useful-commands">Useful Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#community-guidelines">Community Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#communication">Communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="contributing.html#recognition">Recognition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#design-principles">Design Principles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#single-responsibility">Single Responsibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependency-injection">Dependency Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functional-programming">Functional Programming</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-architecture">Module Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cli-layer">CLI Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-layer">Service Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-models">Data Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#persistence-layer">Persistence Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analytics-module">Analytics Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pet-system">Pet System</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-flow">Data Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#typical-request-flow">Typical Request Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-handling-flow">Error Handling Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#database-design">Database Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#schema-overview">Schema Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design-decisions">Design Decisions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-management">Configuration Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-sources">Configuration Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-locations">File Locations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-architecture">Testing Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-pyramid">Test Pyramid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-isolation">Test Isolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-considerations">Performance Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#database-optimization">Database Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-management">Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scalability-limits">Scalability Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#security-considerations">Security Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-protection">Data Protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#privacy">Privacy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#extensibility">Extensibility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#plugin-architecture-future">Plugin Architecture (Future)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-stability">API Stability</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deployment">Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#distribution-strategy">Distribution Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-methods">Installation Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#monitoring-and-observability">Monitoring and Observability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging-strategy">Logging Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-tracking">Error Tracking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Grit Guardian</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Architecture Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/development/architecture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="contributing.html" class="btn btn-neutral float-left" title="Contributing Guide" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architecture-guide">
+<h1>Architecture Guide<a class="headerlink" href="#architecture-guide" title="Link to this heading"></a></h1>
+<p>This document describes the architecture and design principles of Grit Guardian.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Grit Guardian follows a layered architecture with clear separation of concerns:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────┐
+│              CLI Layer                  │  ← User Interface
+│         (grit_guardian.cli)             │
+└─────────────────┬───────────────────────┘
+                  │
+┌─────────────────▼───────────────────────┐
+│            Service Layer                │  ← Business Logic
+│    (grit_guardian.core.habit_tracker)   │
+└─────┬───────────────────────────┬───────┘
+      │                           │
+┌─────▼──────┐              ┌─────▼──────┐
+│  Analytics │              │    Pet     │  ← Domain Services
+│   Module   │              │   System   │
+└────────────┘              └────────────┘
+      │                           │
+┌─────▼───────────────────────────▼───────┐
+│            Data Layer                   │  ← Persistence
+│  (grit_guardian.persistence.database)   │
+└─────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="design-principles">
+<h2>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading"></a></h2>
+<section id="single-responsibility">
+<h3>Single Responsibility<a class="headerlink" href="#single-responsibility" title="Link to this heading"></a></h3>
+<p>Each module has a single, well-defined responsibility:</p>
+<ul class="simple">
+<li><p><strong>CLI</strong>: User interface and command parsing</p></li>
+<li><p><strong>HabitTracker</strong>: Business logic orchestration</p></li>
+<li><p><strong>DatabaseManager</strong>: Data persistence operations</p></li>
+<li><p><strong>Analytics</strong>: Calculations and statistics</p></li>
+<li><p><strong>Pet</strong>: Virtual companion system</p></li>
+<li><p><strong>Models</strong>: Data structures and validation</p></li>
+</ul>
+</section>
+<section id="dependency-injection">
+<h3>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Link to this heading"></a></h3>
+<p>Components receive their dependencies rather than creating them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># HabitTracker receives DatabaseManager</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">HabitTracker</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_manager</span><span class="p">:</span> <span class="n">DatabaseManager</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">db_manager</span>
+
+<span class="c1"># CLI creates and injects dependencies</span>
+<span class="n">db_manager</span> <span class="o">=</span> <span class="n">DatabaseManager</span><span class="p">()</span>
+<span class="n">tracker</span> <span class="o">=</span> <span class="n">HabitTracker</span><span class="p">(</span><span class="n">db_manager</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="functional-programming">
+<h3>Functional Programming<a class="headerlink" href="#functional-programming" title="Link to this heading"></a></h3>
+<p>Analytics module uses functional programming principles:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pure functions with no side effects</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_streak</span><span class="p">(</span><span class="n">completions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">datetime</span><span class="p">],</span> <span class="n">periodicity</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate streak based on input data only.&quot;&quot;&quot;</span>
+    <span class="c1"># Implementation uses only input parameters</span>
+
+<span class="c1"># Immutable data structures where possible</span>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AnalyticsResult</span><span class="p">:</span>
+    <span class="n">current_streak</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">longest_streak</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">completion_rate</span><span class="p">:</span> <span class="nb">float</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="module-architecture">
+<h2>Module Architecture<a class="headerlink" href="#module-architecture" title="Link to this heading"></a></h2>
+<section id="cli-layer">
+<h3>CLI Layer<a class="headerlink" href="#cli-layer" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">grit_guardian.cli</span></code></p>
+<p><strong>Responsibilities</strong>:
+- Command-line argument parsing
+- User input validation
+- Output formatting and display
+- Error message presentation</p>
+<p><strong>Key Components</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main CLI entry point.&quot;&quot;&quot;</span>
+
+<span class="nd">@main</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">periodicity</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add habit command implementation.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p><strong>Design Patterns</strong>:
+- <strong>Command Pattern</strong>: Each CLI command maps to a specific action
+- <strong>Facade Pattern</strong>: CLI provides simple interface to complex business logic</p>
+</section>
+<section id="service-layer">
+<h3>Service Layer<a class="headerlink" href="#service-layer" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">grit_guardian.core.habit_tracker</span></code></p>
+<p><strong>Responsibilities</strong>:
+- Business rule enforcement
+- Transaction coordination
+- Data validation
+- Error handling and conversion</p>
+<p><strong>Key Components</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HabitTracker</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_habit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">periodicity</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Habit</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add new habit with validation.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">complete_habit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Complete habit with business rules.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p><strong>Design Patterns</strong>:
+- <strong>Service Layer Pattern</strong>: Encapsulates business logic
+- <strong>Repository Pattern</strong>: Abstracts data access through DatabaseManager</p>
+</section>
+<section id="data-models">
+<h3>Data Models<a class="headerlink" href="#data-models" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">grit_guardian.core.models</span></code></p>
+<p><strong>Responsibilities</strong>:
+- Data structure definitions
+- Basic validation logic
+- Type safety and serialization</p>
+<p><strong>Key Components</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Habit</span><span class="p">:</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">task</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">periodicity</span><span class="p">:</span> <span class="n">Periodicity</span>
+    <span class="n">created_at</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="n">completions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Design Patterns</strong>:
+- <strong>Data Transfer Object (DTO)</strong>: Habit carries data between layers
+- <strong>Value Object</strong>: Periodicity enum represents domain concepts</p>
+</section>
+<section id="persistence-layer">
+<h3>Persistence Layer<a class="headerlink" href="#persistence-layer" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">grit_guardian.persistence.database_manager</span></code></p>
+<p><strong>Responsibilities</strong>:
+- Database connection management
+- SQL query execution
+- Data mapping and conversion
+- Transaction handling</p>
+<p><strong>Key Components</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DatabaseManager</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_habit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">periodicity</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create habit in database.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_habits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve all habits with metadata.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p><strong>Design Patterns</strong>:
+- <strong>Repository Pattern</strong>: Provides collection-like interface to data
+- <strong>Unit of Work</strong>: Manages transactions and consistency</p>
+</section>
+<section id="analytics-module">
+<h3>Analytics Module<a class="headerlink" href="#analytics-module" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">grit_guardian.analytics.analytics</span></code></p>
+<p><strong>Responsibilities</strong>:
+- Streak calculations
+- Statistical analysis
+- Performance metrics
+- Data aggregation</p>
+<p><strong>Key Components</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_streak</span><span class="p">(</span><span class="n">completions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">datetime</span><span class="p">],</span> <span class="n">periodicity</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pure function for streak calculation.&quot;&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_habit_analytics</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">created_at</span><span class="p">:</span> <span class="n">datetime</span><span class="p">,</span>
+                       <span class="n">completions</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">datetime</span><span class="p">],</span> <span class="n">periodicity</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Comprehensive habit analysis.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p><strong>Design Patterns</strong>:
+- <strong>Strategy Pattern</strong>: Different algorithms for daily vs weekly calculations
+- <strong>Pure Functions</strong>: No side effects, easier to test and reason about</p>
+</section>
+<section id="pet-system">
+<h3>Pet System<a class="headerlink" href="#pet-system" title="Link to this heading"></a></h3>
+<p><strong>Location</strong>: <code class="docutils literal notranslate"><span class="pre">grit_guardian.pet.pet</span></code></p>
+<p><strong>Responsibilities</strong>:
+- Mood calculation based on habits
+- ASCII art generation
+- Motivational messaging
+- Visual feedback system</p>
+<p><strong>Key Components</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Pet</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_mood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">habits_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">PetMood</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate mood based on habit performance.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_ascii_art</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate mood-appropriate ASCII art.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p><strong>Design Patterns</strong>:
+- <strong>State Pattern</strong>: Pet mood affects behavior and appearance
+- <strong>Template Method</strong>: Mood calculation follows consistent algorithm</p>
+</section>
+</section>
+<section id="data-flow">
+<h2>Data Flow<a class="headerlink" href="#data-flow" title="Link to this heading"></a></h2>
+<section id="typical-request-flow">
+<h3>Typical Request Flow<a class="headerlink" href="#typical-request-flow" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>CLI Command</strong>: User runs <code class="docutils literal notranslate"><span class="pre">gg</span> <span class="pre">complete</span> <span class="pre">&quot;Exercise&quot;</span></code></p></li>
+<li><p><strong>Command Parsing</strong>: Click parses arguments and calls complete()</p></li>
+<li><p><strong>Service Call</strong>: CLI calls <code class="docutils literal notranslate"><span class="pre">tracker.complete_habit(&quot;Exercise&quot;)</span></code></p></li>
+<li><p><strong>Business Logic</strong>: HabitTracker validates and applies business rules</p></li>
+<li><p><strong>Data Access</strong>: HabitTracker calls <code class="docutils literal notranslate"><span class="pre">db.add_completion()</span></code></p></li>
+<li><p><strong>Database Update</strong>: DatabaseManager executes SQL INSERT</p></li>
+<li><p><strong>Response</strong>: Success/failure propagates back through layers</p></li>
+<li><p><strong>Output</strong>: CLI displays confirmation message</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>User Input → CLI → HabitTracker → DatabaseManager → SQLite
+             ↓
+Output ← CLI ← HabitTracker ← DatabaseManager ← SQLite
+</pre></div>
+</div>
+</section>
+<section id="error-handling-flow">
+<h3>Error Handling Flow<a class="headerlink" href="#error-handling-flow" title="Link to this heading"></a></h3>
+<p>Errors are handled at appropriate layers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DatabaseManager: Low-level errors</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">DatabaseError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SQL error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># HabitTracker: Business logic errors</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">habit</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">HabitNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Habit &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; not found&quot;</span><span class="p">)</span>
+
+<span class="c1"># CLI: User-friendly error display</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">tracker</span><span class="o">.</span><span class="n">complete_habit</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="s2">&quot;✓ Completed!&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">HabitNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">click</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✗ </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="database-design">
+<h2>Database Design<a class="headerlink" href="#database-design" title="Link to this heading"></a></h2>
+<section id="schema-overview">
+<h3>Schema Overview<a class="headerlink" href="#schema-overview" title="Link to this heading"></a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="c1">-- Core habit definition</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">habits</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">task</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">periodicity</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">CHECK</span><span class="p">(</span><span class="n">periodicity</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;daily&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;weekly&#39;</span><span class="p">)),</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span>
+<span class="p">);</span>
+
+<span class="c1">-- Completion tracking</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">completions</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">habit_id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">completed_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">habit_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">habits</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="design-decisions">
+<h3>Design Decisions<a class="headerlink" href="#design-decisions" title="Link to this heading"></a></h3>
+<p><strong>Normalized Structure</strong>: Separate tables for habits and completions allow:
+- Efficient queries for completion history
+- Referential integrity with foreign keys
+- Easy addition of completion metadata</p>
+<p><strong>Timestamp Storage</strong>: All times stored as ISO format strings:
+- Timezone-agnostic
+- Easy parsing and formatting
+- Compatible across platforms</p>
+<p><strong>Referential Integrity</strong>: Foreign key constraints ensure:
+- Orphaned completions are automatically deleted
+- Data consistency is maintained
+- Database-level validation</p>
+</section>
+</section>
+<section id="configuration-management">
+<h2>Configuration Management<a class="headerlink" href="#configuration-management" title="Link to this heading"></a></h2>
+<section id="configuration-sources">
+<h3>Configuration Sources<a class="headerlink" href="#configuration-sources" title="Link to this heading"></a></h3>
+<p>Configuration is loaded from multiple sources in order of precedence:</p>
+<ol class="arabic simple">
+<li><p><strong>Command-line arguments</strong> (highest priority)</p></li>
+<li><p><strong>Environment variables</strong></p></li>
+<li><p><strong>Configuration files</strong></p></li>
+<li><p><strong>Default values</strong> (lowest priority)</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Environment variables</span>
+<span class="n">XDG_CONFIG_HOME</span>  <span class="c1"># Base config directory</span>
+<span class="n">GG_DATABASE_PATH</span> <span class="c1"># Custom database location</span>
+</pre></div>
+</div>
+</section>
+<section id="file-locations">
+<h3>File Locations<a class="headerlink" href="#file-locations" title="Link to this heading"></a></h3>
+<p>Following XDG Base Directory Specification:</p>
+<ul class="simple">
+<li><p><strong>Linux/macOS</strong>: <code class="docutils literal notranslate"><span class="pre">~/.config/grit-guardian/</span></code></p></li>
+<li><p><strong>Windows</strong>: <code class="docutils literal notranslate"><span class="pre">%APPDATA%\grit-guardian\</span></code></p></li>
+</ul>
+<p>Files:
+- <code class="docutils literal notranslate"><span class="pre">habits.db</span></code> - SQLite database
+- <code class="docutils literal notranslate"><span class="pre">config.json</span></code> - User preferences (future)
+- <code class="docutils literal notranslate"><span class="pre">backups/</span></code> - Automatic backups (future)</p>
+</section>
+</section>
+<section id="testing-architecture">
+<h2>Testing Architecture<a class="headerlink" href="#testing-architecture" title="Link to this heading"></a></h2>
+<section id="test-pyramid">
+<h3>Test Pyramid<a class="headerlink" href="#test-pyramid" title="Link to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>    ┌──────────────────┐
+    │   Integration    │  ← Few, complex
+    │      Tests       │
+    └──────────────────┘
+  ┌────────────────────────┐
+  │     Service Tests      │  ← More, focused
+  └────────────────────────┘
+┌──────────────────────────────┐
+│        Unit Tests            │  ← Many, fast
+└──────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="test-isolation">
+<h3>Test Isolation<a class="headerlink" href="#test-isolation" title="Link to this heading"></a></h3>
+<p>Each test layer is isolated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unit tests: Mock all dependencies</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_calculate_streak</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">completions</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">calculate_streak</span><span class="p">(</span><span class="n">completions</span><span class="p">,</span> <span class="s1">&#39;daily&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="c1"># Service tests: Use test database</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_add_habit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp_db</span><span class="p">):</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">DatabaseManager</span><span class="p">(</span><span class="n">temp_db</span><span class="p">)</span>
+    <span class="n">tracker</span> <span class="o">=</span> <span class="n">HabitTracker</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+    <span class="n">habit</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">add_habit</span><span class="p">(</span><span class="s2">&quot;Test&quot;</span><span class="p">,</span> <span class="s2">&quot;Task&quot;</span><span class="p">,</span> <span class="s2">&quot;daily&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">habit</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Test&quot;</span>
+
+<span class="c1"># Integration tests: Full system</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_cli_workflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isolated_cli_runner</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;Task&#39;</span><span class="p">,</span> <span class="s1">&#39;daily&#39;</span><span class="p">])</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">exit_code</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="performance-considerations">
+<h2>Performance Considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading"></a></h2>
+<section id="database-optimization">
+<h3>Database Optimization<a class="headerlink" href="#database-optimization" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Indexes</strong>: On frequently queried columns (habit_id, completed_at)</p></li>
+<li><p><strong>Query Efficiency</strong>: Minimize N+1 queries with JOINs</p></li>
+<li><p><strong>Connection Management</strong>: Single connection per operation</p></li>
+<li><p><strong>Transaction Batching</strong>: Group related operations</p></li>
+</ul>
+</section>
+<section id="memory-management">
+<h3>Memory Management<a class="headerlink" href="#memory-management" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Lazy Loading</strong>: Load completions only when needed</p></li>
+<li><p><strong>Data Structures</strong>: Use appropriate collections (lists vs sets)</p></li>
+<li><p><strong>Caching</strong>: Cache frequently accessed data in memory</p></li>
+<li><p><strong>Cleanup</strong>: Explicit resource cleanup where needed</p></li>
+</ul>
+</section>
+<section id="scalability-limits">
+<h3>Scalability Limits<a class="headerlink" href="#scalability-limits" title="Link to this heading"></a></h3>
+<p>Current architecture is optimized for:
+- <strong>Habits</strong>: Up to 1,000 active habits
+- <strong>Completions</strong>: Up to 100,000 completion records
+- <strong>Response Time</strong>: &lt; 100ms for typical operations
+- <strong>Database Size</strong>: Up to 100MB</p>
+<p>Future scaling may require:
+- Database connection pooling
+- Background processing for analytics
+- Data archiving strategies</p>
+</section>
+</section>
+<section id="security-considerations">
+<h2>Security Considerations<a class="headerlink" href="#security-considerations" title="Link to this heading"></a></h2>
+<section id="data-protection">
+<h3>Data Protection<a class="headerlink" href="#data-protection" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Local Storage</strong>: All data stored locally, no cloud dependencies</p></li>
+<li><p><strong>File Permissions</strong>: Database files have appropriate permissions</p></li>
+<li><p><strong>Input Validation</strong>: All user input is validated and sanitized</p></li>
+<li><p><strong>SQL Injection</strong>: Parameterized queries prevent injection attacks</p></li>
+</ul>
+</section>
+<section id="privacy">
+<h3>Privacy<a class="headerlink" href="#privacy" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>No Tracking</strong>: No analytics or usage tracking</p></li>
+<li><p><strong>No Network</strong>: No network connections required</p></li>
+<li><p><strong>User Control</strong>: Users have full control over their data</p></li>
+<li><p><strong>Data Portability</strong>: Standard SQLite format allows easy migration</p></li>
+</ul>
+</section>
+</section>
+<section id="extensibility">
+<h2>Extensibility<a class="headerlink" href="#extensibility" title="Link to this heading"></a></h2>
+<section id="plugin-architecture-future">
+<h3>Plugin Architecture (Future)<a class="headerlink" href="#plugin-architecture-future" title="Link to this heading"></a></h3>
+<p>Potential extension points:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Custom analytics plugins</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AnalyticsPlugin</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_custom_metric</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">habits</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Habit</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+<span class="c1"># Custom pet behaviors</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">PetPlugin</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_custom_ascii_art</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mood</span><span class="p">:</span> <span class="n">PetMood</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+<span class="c1"># Export/import plugins</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DataPlugin</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">export_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">habits</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Habit</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="api-stability">
+<h3>API Stability<a class="headerlink" href="#api-stability" title="Link to this heading"></a></h3>
+<p>Public APIs are designed for stability:</p>
+<ul class="simple">
+<li><p><strong>Semantic Versioning</strong>: Major.Minor.Patch versioning</p></li>
+<li><p><strong>Deprecation Policy</strong>: 2-version deprecation cycle</p></li>
+<li><p><strong>Backward Compatibility</strong>: Maintain compatibility within major versions</p></li>
+</ul>
+</section>
+</section>
+<section id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Link to this heading"></a></h2>
+<section id="distribution-strategy">
+<h3>Distribution Strategy<a class="headerlink" href="#distribution-strategy" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>PyPI Package</strong>: Primary distribution method</p></li>
+<li><p><strong>GitHub Releases</strong>: Source code and binaries</p></li>
+<li><p><strong>Docker Images</strong>: Containerized deployment (future)</p></li>
+<li><p><strong>Package Managers</strong>: OS-specific packages (future)</p></li>
+</ul>
+</section>
+<section id="installation-methods">
+<h3>Installation Methods<a class="headerlink" href="#installation-methods" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># PyPI (recommended)</span>
+pip<span class="w"> </span>install<span class="w"> </span>grit-guardian
+
+<span class="c1"># Development install</span>
+git<span class="w"> </span>clone<span class="w"> </span>repo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+
+<span class="c1"># Poetry (for contributors)</span>
+git<span class="w"> </span>clone<span class="w"> </span>repo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>poetry<span class="w"> </span>install
+</pre></div>
+</div>
+</section>
+</section>
+<section id="monitoring-and-observability">
+<h2>Monitoring and Observability<a class="headerlink" href="#monitoring-and-observability" title="Link to this heading"></a></h2>
+<section id="logging-strategy">
+<h3>Logging Strategy<a class="headerlink" href="#logging-strategy" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Structured logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_habit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">periodicity</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Habit</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Adding habit&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;habit_name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+        <span class="s2">&quot;periodicity&quot;</span><span class="p">:</span> <span class="n">periodicity</span>
+    <span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="error-tracking">
+<h3>Error Tracking<a class="headerlink" href="#error-tracking" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Exception Handling</strong>: Comprehensive error handling at all layers</p></li>
+<li><p><strong>Error Classification</strong>: Different error types for different scenarios</p></li>
+<li><p><strong>User Feedback</strong>: Clear, actionable error messages</p></li>
+<li><p><strong>Debug Information</strong>: Detailed logging for troubleshooting</p></li>
+</ul>
+<p>This architecture provides a solid foundation for Grit Guardian while maintaining flexibility for future enhancements.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contributing.html" class="btn btn-neutral float-left" title="Contributing Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Patrick Weiss.
+      <span class="lastupdated">Last updated on Aug 11, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

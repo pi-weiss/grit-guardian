@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>grit_guardian.pet.pet &mdash; Grit Guardian 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Grit Guardian
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#installation-methods">Installation Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../installation.html#from-pypi-recommended">From PyPI (Recommended)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../installation.html#from-source">From Source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#verify-installation">Verify Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#first-run">First Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#upgrading">Upgrading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#uninstallation">Uninstallation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../installation.html#common-issues">Common Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../installation.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#initialize-with-sample-data">Initialize with Sample Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#basic-commands">Basic Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#list-your-habits">List Your Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#check-today-s-status">Check Today’s Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#complete-a-habit">Complete a Habit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#meet-your-pet">Meet Your Pet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#your-first-week">Your First Week</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#day-1-3-getting-started">Day 1-3: Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#day-4-7-building-streaks">Day 4-7: Building Streaks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#essential-commands-reference">Essential Commands Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#habit-management">Habit Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#tracking-progress">Tracking Progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickstart.html#analytics-insights">Analytics &amp; Insights</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#sample-workflow">Sample Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#tips-for-success">Tips for Success</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickstart.html#need-help">Need Help?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#core-concepts">Core Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#habits">Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#periodicity-types">Periodicity Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#your-guardian-companion">Your Guardian Companion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#habit-management">Habit Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#adding-habits">Adding Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#listing-habits">Listing Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#deleting-habits">Deleting Habits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#tracking-completions">Tracking Completions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#completing-habits">Completing Habits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#viewing-status">Viewing Status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#analytics-progress">Analytics &amp; Progress</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#streak-analytics">Streak Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#weekly-progress">Weekly Progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#identifying-struggles">Identifying Struggles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#pet-interaction">Pet Interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#checking-your-companion">Checking Your Companion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#understanding-pet-moods">Understanding Pet Moods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#advanced-features">Advanced Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#data-storage">Data Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#sample-data">Sample Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#database-reset">Database Reset</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#tips-best-practices">Tips &amp; Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#habit-design">Habit Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#tracking-strategy">Tracking Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#long-term-success">Long-term Success</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#common-workflows">Common Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#daily-routine">Daily Routine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#weekly-review">Weekly Review</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#monthly-maintenance">Monthly Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#common-issues">Common Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../user_guide.html#performance-tips">Performance Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../user_guide.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli_reference.html">CLI Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#main-command">Main Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#commands-overview">Commands Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#habit-management">Habit Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#progress-tracking">Progress Tracking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#analytics-insights">Analytics &amp; Insights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#detailed-command-reference">Detailed Command Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#add">add</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#list">list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#delete">delete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#complete">complete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#status">status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#streaks">streaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#weekly">weekly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#struggled">struggled</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#pet">pet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../cli_reference.html#init">init</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#exit-codes">Exit Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#shell-completion">Shell Completion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#output-formats">Output Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cli_reference.html#performance-notes">Performance Notes</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/generated/grit_guardian.cli.html">grit_guardian.cli</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.cli.html#grit_guardian.cli.get_tracker"><code class="docutils literal notranslate"><span class="pre">get_tracker()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html">grit_guardian.core.habit_tracker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitNotFoundError"><code class="docutils literal notranslate"><span class="pre">HabitNotFoundError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitAlreadyExistsError"><code class="docutils literal notranslate"><span class="pre">HabitAlreadyExistsError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker"><code class="docutils literal notranslate"><span class="pre">HabitTracker</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.__init__"><code class="docutils literal notranslate"><span class="pre">HabitTracker.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.add_habit"><code class="docutils literal notranslate"><span class="pre">HabitTracker.add_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.list_habits"><code class="docutils literal notranslate"><span class="pre">HabitTracker.list_habits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_habit"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.delete_habit"><code class="docutils literal notranslate"><span class="pre">HabitTracker.delete_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.complete_habit"><code class="docutils literal notranslate"><span class="pre">HabitTracker.complete_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_habit_streak"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_habit_streak()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_statistics"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_statistics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_status"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_status()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_streaks"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_streaks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.get_pet"><code class="docutils literal notranslate"><span class="pre">HabitTracker.get_pet()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.habit_tracker.html#grit_guardian.core.habit_tracker.HabitTracker.initialize_sample_data"><code class="docutils literal notranslate"><span class="pre">HabitTracker.initialize_sample_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html">grit_guardian.core.models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Periodicity"><code class="docutils literal notranslate"><span class="pre">Periodicity</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Periodicity.DAILY"><code class="docutils literal notranslate"><span class="pre">Periodicity.DAILY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Periodicity.WEEKLY"><code class="docutils literal notranslate"><span class="pre">Periodicity.WEEKLY</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit"><code class="docutils literal notranslate"><span class="pre">Habit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.id"><code class="docutils literal notranslate"><span class="pre">Habit.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.name"><code class="docutils literal notranslate"><span class="pre">Habit.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.task"><code class="docutils literal notranslate"><span class="pre">Habit.task</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.periodicity"><code class="docutils literal notranslate"><span class="pre">Habit.periodicity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.created_at"><code class="docutils literal notranslate"><span class="pre">Habit.created_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.completions"><code class="docutils literal notranslate"><span class="pre">Habit.completions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.__post_init__"><code class="docutils literal notranslate"><span class="pre">Habit.__post_init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.from_db_row"><code class="docutils literal notranslate"><span class="pre">Habit.from_db_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.add_completion"><code class="docutils literal notranslate"><span class="pre">Habit.add_completion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.get_streak"><code class="docutils literal notranslate"><span class="pre">Habit.get_streak()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.is_completed_today"><code class="docutils literal notranslate"><span class="pre">Habit.is_completed_today()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.is_completed_this_week"><code class="docutils literal notranslate"><span class="pre">Habit.is_completed_this_week()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.core.models.html#grit_guardian.core.models.Habit.__init__"><code class="docutils literal notranslate"><span class="pre">Habit.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html">grit_guardian.persistence.database_manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.adapt_datetime"><code class="docutils literal notranslate"><span class="pre">adapt_datetime()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.convert_datetime"><code class="docutils literal notranslate"><span class="pre">convert_datetime()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager"><code class="docutils literal notranslate"><span class="pre">DatabaseManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.__init__"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.create_habit"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.create_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.get_habits"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.get_habits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.get_habit_by_name"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.get_habit_by_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.delete_habit"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.delete_habit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.add_completion"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.add_completion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.get_completions"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.get_completions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.backup_database"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.backup_database()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.persistence.database_manager.html#grit_guardian.persistence.database_manager.DatabaseManager.get_stats"><code class="docutils literal notranslate"><span class="pre">DatabaseManager.get_stats()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/generated/grit_guardian.analytics.analytics.html">grit_guardian.analytics.analytics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.calculate_streak"><code class="docutils literal notranslate"><span class="pre">calculate_streak()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.calculate_longest_streak"><code class="docutils literal notranslate"><span class="pre">calculate_longest_streak()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.get_completion_rate"><code class="docutils literal notranslate"><span class="pre">get_completion_rate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.get_habit_analytics"><code class="docutils literal notranslate"><span class="pre">get_habit_analytics()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.generate_weekly_view"><code class="docutils literal notranslate"><span class="pre">generate_weekly_view()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.calculate_expected_completions"><code class="docutils literal notranslate"><span class="pre">calculate_expected_completions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.identify_struggled_habits"><code class="docutils literal notranslate"><span class="pre">identify_struggled_habits()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html">grit_guardian.pet.pet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood"><code class="docutils literal notranslate"><span class="pre">PetMood</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.ECSTATIC"><code class="docutils literal notranslate"><span class="pre">PetMood.ECSTATIC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.HAPPY"><code class="docutils literal notranslate"><span class="pre">PetMood.HAPPY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.CONTENT"><code class="docutils literal notranslate"><span class="pre">PetMood.CONTENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.SAD"><code class="docutils literal notranslate"><span class="pre">PetMood.SAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.WORRIED"><code class="docutils literal notranslate"><span class="pre">PetMood.WORRIED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet"><code class="docutils literal notranslate"><span class="pre">Pet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.__init__"><code class="docutils literal notranslate"><span class="pre">Pet.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.calculate_mood"><code class="docutils literal notranslate"><span class="pre">Pet.calculate_mood()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.get_ascii_art"><code class="docutils literal notranslate"><span class="pre">Pet.get_ascii_art()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.get_mood_message"><code class="docutils literal notranslate"><span class="pre">Pet.get_mood_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/generated/grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.__str__"><code class="docutils literal notranslate"><span class="pre">Pet.__str__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/modules.html#module-documentation">Module Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#cli-module">CLI Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#habit-tracker">Habit Tracker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#models">Models</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#persistence-module">Persistence Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api/modules.html#database-manager">Database Manager</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#analytics-module">Analytics Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api/modules.html#pet-module">Pet Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Development:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/contributing.html">Contributing Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#getting-started">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#development-setup">Development Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#development-workflow">Development Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#making-changes">Making Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#coding-standards">Coding Standards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#code-style">Code Style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#type-hints">Type Hints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#testing">Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#test-structure">Test Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#writing-tests">Writing Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#test-coverage">Test Coverage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#commit-message-format">Commit Message Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#pull-request-process">Pull Request Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#issue-reporting">Issue Reporting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#bug-reports">Bug Reports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#feature-requests">Feature Requests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#areas-for-contribution">Areas for Contribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#high-priority">High Priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#medium-priority">Medium Priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#low-priority">Low Priority</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#development-environment">Development Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#recommended-tools">Recommended Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#useful-commands">Useful Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#community-guidelines">Community Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#communication">Communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/contributing.html#recognition">Recognition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/contributing.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/architecture.html">Architecture Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#design-principles">Design Principles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#single-responsibility">Single Responsibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#dependency-injection">Dependency Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#functional-programming">Functional Programming</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#module-architecture">Module Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#cli-layer">CLI Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#service-layer">Service Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#data-models">Data Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#persistence-layer">Persistence Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#analytics-module">Analytics Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#pet-system">Pet System</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#data-flow">Data Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#typical-request-flow">Typical Request Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#error-handling-flow">Error Handling Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#database-design">Database Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#schema-overview">Schema Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#design-decisions">Design Decisions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#configuration-management">Configuration Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#configuration-sources">Configuration Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#file-locations">File Locations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#testing-architecture">Testing Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#test-pyramid">Test Pyramid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#test-isolation">Test Isolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#performance-considerations">Performance Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#database-optimization">Database Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#memory-management">Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#scalability-limits">Scalability Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#security-considerations">Security Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#data-protection">Data Protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#privacy">Privacy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#extensibility">Extensibility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#plugin-architecture-future">Plugin Architecture (Future)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#api-stability">API Stability</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#deployment">Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#distribution-strategy">Distribution Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#installation-methods">Installation Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../development/architecture.html#monitoring-and-observability">Monitoring and Observability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#logging-strategy">Logging Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../development/architecture.html#error-tracking">Error Tracking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Grit Guardian</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">grit_guardian.pet.pet</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for grit_guardian.pet.pet</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+
+
+<div class="viewcode-block" id="PetMood">
+<a class="viewcode-back" href="../../../api/modules.html#grit_guardian.pet.pet.PetMood">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PetMood</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enum representing different mood states of the pet.&quot;&quot;&quot;</span>
+
+    <span class="n">ECSTATIC</span> <span class="o">=</span> <span class="s2">&quot;ecstatic&quot;</span>
+    <span class="n">HAPPY</span> <span class="o">=</span> <span class="s2">&quot;happy&quot;</span>
+    <span class="n">CONTENT</span> <span class="o">=</span> <span class="s2">&quot;content&quot;</span>
+    <span class="n">SAD</span> <span class="o">=</span> <span class="s2">&quot;sad&quot;</span>
+    <span class="n">WORRIED</span> <span class="o">=</span> <span class="s2">&quot;worried&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="Pet">
+<a class="viewcode-back" href="../../../api/modules.html#grit_guardian.pet.pet.Pet">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Pet</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Represents the Grit Guardian pet that reflects user&#39;s habit performance.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Pet.__init__">
+<a class="viewcode-back" href="../../../api/modules.html#grit_guardian.pet.pet.Pet.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Guardian&quot;</span><span class="p">,</span> <span class="n">species</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Dragon&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes a new pet.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: The pet&#39;s name (default: &quot;Guardian&quot;)</span>
+<span class="sd">            species: The pet&#39;s species (default: &quot;Dragon&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span> <span class="o">=</span> <span class="n">PetMood</span><span class="o">.</span><span class="n">CONTENT</span></div>
+
+
+<div class="viewcode-block" id="Pet.calculate_mood">
+<a class="viewcode-back" href="../../../api/modules.html#grit_guardian.pet.pet.Pet.calculate_mood">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_mood</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">habits_data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">PetMood</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates mood based on habit completion data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            habits_data: List of dictionaries containing habit analytics</span>
+<span class="sd">                        Each dict should have &#39;completion_rate&#39; and &#39;current_streak&#39; keys</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            PetMood enum value representing the calculated mood</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">habits_data</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span> <span class="o">=</span> <span class="n">PetMood</span><span class="o">.</span><span class="n">WORRIED</span>
+            <span class="k">return</span> <span class="n">PetMood</span><span class="o">.</span><span class="n">WORRIED</span>
+
+        <span class="c1"># Calculate average completion rate and streak status</span>
+        <span class="n">avg_completion</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;completion_rate&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">habits_data</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span>
+            <span class="n">habits_data</span>
+        <span class="p">)</span>
+        <span class="n">active_streaks</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">habits_data</span> <span class="k">if</span> <span class="n">h</span><span class="p">[</span><span class="s2">&quot;current_streak&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">streak_percentage</span> <span class="o">=</span> <span class="n">active_streaks</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">habits_data</span><span class="p">)</span> <span class="k">if</span> <span class="n">habits_data</span> <span class="k">else</span> <span class="mi">0</span>
+
+        <span class="c1"># Update current mood based on performance</span>
+        <span class="k">if</span> <span class="n">avg_completion</span> <span class="o">&gt;=</span> <span class="mi">90</span> <span class="ow">and</span> <span class="n">streak_percentage</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span> <span class="o">=</span> <span class="n">PetMood</span><span class="o">.</span><span class="n">ECSTATIC</span>
+        <span class="k">elif</span> <span class="n">avg_completion</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span> <span class="o">=</span> <span class="n">PetMood</span><span class="o">.</span><span class="n">HAPPY</span>
+        <span class="k">elif</span> <span class="n">avg_completion</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span> <span class="o">=</span> <span class="n">PetMood</span><span class="o">.</span><span class="n">CONTENT</span>
+        <span class="k">elif</span> <span class="n">avg_completion</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span> <span class="o">=</span> <span class="n">PetMood</span><span class="o">.</span><span class="n">SAD</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span> <span class="o">=</span> <span class="n">PetMood</span><span class="o">.</span><span class="n">WORRIED</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span></div>
+
+
+    <span class="c1"># The following &quot;artworks&quot; are AI-generated for now</span>
+    <span class="c1"># and will be updated in the future</span>
+<div class="viewcode-block" id="Pet.get_ascii_art">
+<a class="viewcode-back" href="../../../api/modules.html#grit_guardian.pet.pet.Pet.get_ascii_art">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_ascii_art</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns ASCII art based on current mood.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            String containing ASCII art representation of the pet</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">art</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">ECSTATIC</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    /\   /\</span>
+<span class="s2">   (  O O  )</span>
+<span class="s2">  &lt;  \___/  &gt;</span>
+<span class="s2">   \   ^   /</span>
+<span class="s2">    \_/_\_/&quot;&quot;&quot;</span><span class="p">,</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">HAPPY</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    /\   /\</span>
+<span class="s2">   (  ^.^  )</span>
+<span class="s2">  &lt;  \___/  &gt;</span>
+<span class="s2">   \  ~~~  /&quot;&quot;&quot;</span><span class="p">,</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">CONTENT</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    /\   /\</span>
+<span class="s2">   (  -.-  )</span>
+<span class="s2">  &lt;  \___/  &gt;</span>
+<span class="s2">   \  ---  /&quot;&quot;&quot;</span><span class="p">,</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">SAD</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    /\   /\</span>
+<span class="s2">   (  -..-  )</span>
+<span class="s2">  &lt;  \___/  &gt;</span>
+<span class="s2">   \  vvv  /&quot;&quot;&quot;</span><span class="p">,</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">WORRIED</span><span class="p">:</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    /\   /\</span>
+<span class="s2">   (  o.o  )</span>
+<span class="s2">  &lt;  \___/  &gt;</span>
+<span class="s2">   \  ~~~  /&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">art</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span><span class="p">,</span> <span class="n">art</span><span class="p">[</span><span class="n">PetMood</span><span class="o">.</span><span class="n">CONTENT</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="Pet.get_mood_message">
+<a class="viewcode-back" href="../../../api/modules.html#grit_guardian.pet.pet.Pet.get_mood_message">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_mood_message</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets a message based on the pet&#39;s current mood.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            String with a mood-appropriate message</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">ECSTATIC</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is absolutely thrilled with your consistency!&quot;</span><span class="p">,</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">HAPPY</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is happy to see your progress!&quot;</span><span class="p">,</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">CONTENT</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is content with your efforts.&quot;</span><span class="p">,</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">SAD</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> looks a bit sad. Some habits need attention.&quot;</span><span class="p">,</span>
+            <span class="n">PetMood</span><span class="o">.</span><span class="n">WORRIED</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is worried about your habits. Time to get back on track!&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">messages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> is feeling </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Pet.__str__">
+<a class="viewcode-back" href="../../../api/modules.html#grit_guardian.pet.pet.Pet.__str__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;String representation of the pet.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="si">}</span><span class="s2"> named </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> (Mood: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_mood</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Patrick Weiss.
+      <span class="lastupdated">Last updated on Aug 11, 2025.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
