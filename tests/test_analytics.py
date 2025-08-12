@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime, timedelta
-from grit_guardian.analytics.analytics import (
+from grit_guardian.analytics import (
     calculate_streak,
     calculate_longest_streak,
     get_completion_rate,
@@ -9,7 +9,7 @@ from grit_guardian.analytics.analytics import (
     calculate_expected_completions,
     identify_struggled_habits,
 )
-from grit_guardian.core.models import Habit, Periodicity
+from grit_guardian.core import Habit, Periodicity
 
 
 class TestCalculateStreak:
@@ -78,9 +78,71 @@ class TestCalculateStreak:
 
     def test_weekly_streak_year_boundary(self):
         """Tests weekly streak across year boundary."""
-        # Use monkeypatch or just test the logic with specific dates
-        # For now, I skip this test as it requires proper mocking framework
-        pytest.skip("Requires proper datetime mocking")
+        # Create dates that span across year boundary
+        # Week 52 of 2023 to week 3 of 2024
+        from unittest.mock import patch
+
+        # Test case 1: Consecutive weeks across year boundary
+        completions = [
+            datetime(2024, 1, 15),  # Week 3 of 2025
+            datetime(2024, 1, 8),  # Week 2 of 2025
+            datetime(2024, 1, 1),  # Week 1 of 2025
+            datetime(2023, 12, 25),  # Week 52 of 2024
+            datetime(2023, 12, 18),  # Week 51 of 2024
+        ]
+
+        # Mock datetime.now() to be in week 3 of 2024
+        mock_now = datetime(2024, 1, 15, 12, 0, 0)
+
+        with patch("grit_guardian.analytics.analytics.datetime") as mock_datetime:
+            mock_datetime.now.return_value = mock_now
+            mock_datetime.side_effect = lambda *args, **kwargs: datetime(
+                *args, **kwargs
+            )
+
+            # Calculate streak - should be 5 consecutive weeks
+            streak = calculate_streak(completions, "weekly")
+            assert streak == 5, f"Expected streak of 5, got {streak}"
+
+        # Test case 2: Gap at year boundary
+        completions_with_gap = [
+            datetime(2024, 1, 15),  # Week 3 of 2024
+            datetime(2024, 1, 8),  # Week 2 of 2024
+            # Missing Week 1 of 2025
+            datetime(2023, 12, 25),  # Week 52 of 2023
+            datetime(2023, 12, 18),  # Week 51 of 2023
+        ]
+
+        with patch("grit_guardian.analytics.analytics.datetime") as mock_datetime:
+            mock_datetime.now.return_value = mock_now
+            mock_datetime.side_effect = lambda *args, **kwargs: datetime(
+                *args, **kwargs
+            )
+
+            # Should only count the 2024 weeks (streak broken at year boundary)
+            streak = calculate_streak(completions_with_gap, "weekly")
+            assert streak == 2, f"Expected streak of 2, got {streak}"
+
+        # Test case 3: Week 53 handling (some years have 53 weeks)
+        # Using 2020 which had 53 weeks
+        completions_week53 = [
+            datetime(2021, 1, 11),  # Week 2 of 2021
+            datetime(2021, 1, 4),  # Week 1 of 2021
+            datetime(2020, 12, 28),  # Week 53 of 2020
+            datetime(2020, 12, 21),  # Week 52 of 2020
+        ]
+
+        mock_now_2021 = datetime(2021, 1, 11, 12, 0, 0)
+
+        with patch("grit_guardian.analytics.analytics.datetime") as mock_datetime:
+            mock_datetime.now.return_value = mock_now_2021
+            mock_datetime.side_effect = lambda *args, **kwargs: datetime(
+                *args, **kwargs
+            )
+
+            # Should handle week 53 correctly
+            streak = calculate_streak(completions_week53, "weekly")
+            assert streak == 4, f"Expected streak of 4 with week 53, got {streak}"
 
 
 class TestCalculateLongestStreak:
