@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>grit_guardian.pet.pet &mdash; Grit Guardian 1.0.0 documentation</title>
+  <title>grit_guardian.cli.main &mdash; Grit Guardian 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -22,8 +22,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contributing Guide" href="../../development/contributing.html" />
-    <link rel="prev" title="grit_guardian.analytics.analytics" href="grit_guardian.analytics.analytics.html" /> 
+    <link rel="next" title="grit_guardian.core.habit_tracker" href="grit_guardian.core.habit_tracker.html" />
+    <link rel="prev" title="grit_guardian.cli" href="grit_guardian.cli.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -181,9 +181,9 @@
 <p class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../modules.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="grit_guardian.cli.html">grit_guardian.cli</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="grit_guardian.cli.main.html">grit_guardian.cli.main</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="grit_guardian.cli.main.html#grit_guardian.cli.main"><code class="docutils literal notranslate"><span class="pre">main</span></code></a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="grit_guardian.cli.html">grit_guardian.cli</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">grit_guardian.cli.main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.cli.main"><code class="docutils literal notranslate"><span class="pre">main</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -259,21 +259,21 @@
 <li class="toctree-l3"><a class="reference internal" href="grit_guardian.analytics.analytics.html#grit_guardian.analytics.analytics.identify_struggled_habits"><code class="docutils literal notranslate"><span class="pre">identify_struggled_habits()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">grit_guardian.pet.pet</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#grit_guardian.pet.pet.PetMood"><code class="docutils literal notranslate"><span class="pre">PetMood</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.PetMood.ECSTATIC"><code class="docutils literal notranslate"><span class="pre">PetMood.ECSTATIC</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.PetMood.HAPPY"><code class="docutils literal notranslate"><span class="pre">PetMood.HAPPY</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.PetMood.CONTENT"><code class="docutils literal notranslate"><span class="pre">PetMood.CONTENT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.PetMood.SAD"><code class="docutils literal notranslate"><span class="pre">PetMood.SAD</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.PetMood.WORRIED"><code class="docutils literal notranslate"><span class="pre">PetMood.WORRIED</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="grit_guardian.pet.pet.html">grit_guardian.pet.pet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood"><code class="docutils literal notranslate"><span class="pre">PetMood</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.ECSTATIC"><code class="docutils literal notranslate"><span class="pre">PetMood.ECSTATIC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.HAPPY"><code class="docutils literal notranslate"><span class="pre">PetMood.HAPPY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.CONTENT"><code class="docutils literal notranslate"><span class="pre">PetMood.CONTENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.SAD"><code class="docutils literal notranslate"><span class="pre">PetMood.SAD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.PetMood.WORRIED"><code class="docutils literal notranslate"><span class="pre">PetMood.WORRIED</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#grit_guardian.pet.pet.Pet"><code class="docutils literal notranslate"><span class="pre">Pet</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.Pet.__init__"><code class="docutils literal notranslate"><span class="pre">Pet.__init__()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.Pet.calculate_mood"><code class="docutils literal notranslate"><span class="pre">Pet.calculate_mood()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.Pet.get_ascii_art"><code class="docutils literal notranslate"><span class="pre">Pet.get_ascii_art()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.Pet.get_mood_message"><code class="docutils literal notranslate"><span class="pre">Pet.get_mood_message()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grit_guardian.pet.pet.Pet.__str__"><code class="docutils literal notranslate"><span class="pre">Pet.__str__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet"><code class="docutils literal notranslate"><span class="pre">Pet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.__init__"><code class="docutils literal notranslate"><span class="pre">Pet.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.calculate_mood"><code class="docutils literal notranslate"><span class="pre">Pet.calculate_mood()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.get_ascii_art"><code class="docutils literal notranslate"><span class="pre">Pet.get_ascii_art()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.get_mood_message"><code class="docutils literal notranslate"><span class="pre">Pet.get_mood_message()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="grit_guardian.pet.pet.html#grit_guardian.pet.pet.Pet.__str__"><code class="docutils literal notranslate"><span class="pre">Pet.__str__()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -430,124 +430,26 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../modules.html">API Reference</a></li>
-      <li class="breadcrumb-item active">grit_guardian.pet.pet</li>
+          <li class="breadcrumb-item"><a href="grit_guardian.cli.html">grit_guardian.cli</a></li>
+      <li class="breadcrumb-item active">grit_guardian.cli.main</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/api/generated/grit_guardian.pet.pet.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/api/generated/grit_guardian.cli.main.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="grit_guardian.analytics.analytics.html" class="btn btn-neutral float-left" title="grit_guardian.analytics.analytics" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../development/contributing.html" class="btn btn-neutral float-right" title="Contributing Guide" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="grit_guardian.cli.html" class="btn btn-neutral float-left" title="grit_guardian.cli" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="grit_guardian.core.habit_tracker.html" class="btn btn-neutral float-right" title="grit_guardian.core.habit_tracker" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-grit_guardian.pet.pet">
-<span id="grit-guardian-pet-pet"></span><h1>grit_guardian.pet.pet<a class="headerlink" href="#module-grit_guardian.pet.pet" title="Link to this heading"></a></h1>
-<p class="rubric">Classes</p>
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#grit_guardian.pet.pet.Pet" title="grit_guardian.pet.pet.Pet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pet</span></code></a>([name, species])</p></td>
-<td><p>Represents the Grit Guardian pet that reflects user's habit performance.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#grit_guardian.pet.pet.PetMood" title="grit_guardian.pet.pet.PetMood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PetMood</span></code></a>(value)</p></td>
-<td><p>Enum representing different mood states of the pet.</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py class">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.PetMood">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">grit_guardian.pet.pet.</span></span><span class="sig-name descname"><span class="pre">PetMood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/grit_guardian/pet/pet.html#PetMood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#grit_guardian.pet.pet.PetMood" title="Link to this definition"></a></dt>
-<dd><p>Enum representing different mood states of the pet.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.PetMood.ECSTATIC">
-<span class="sig-name descname"><span class="pre">ECSTATIC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ecstatic'</span></em><a class="headerlink" href="#grit_guardian.pet.pet.PetMood.ECSTATIC" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.PetMood.HAPPY">
-<span class="sig-name descname"><span class="pre">HAPPY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'happy'</span></em><a class="headerlink" href="#grit_guardian.pet.pet.PetMood.HAPPY" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.PetMood.CONTENT">
-<span class="sig-name descname"><span class="pre">CONTENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'content'</span></em><a class="headerlink" href="#grit_guardian.pet.pet.PetMood.CONTENT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.PetMood.SAD">
-<span class="sig-name descname"><span class="pre">SAD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sad'</span></em><a class="headerlink" href="#grit_guardian.pet.pet.PetMood.SAD" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.PetMood.WORRIED">
-<span class="sig-name descname"><span class="pre">WORRIED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'worried'</span></em><a class="headerlink" href="#grit_guardian.pet.pet.PetMood.WORRIED" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.Pet">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">grit_guardian.pet.pet.</span></span><span class="sig-name descname"><span class="pre">Pet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Guardian'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Dragon'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/grit_guardian/pet/pet.html#Pet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#grit_guardian.pet.pet.Pet" title="Link to this definition"></a></dt>
-<dd><p>Represents the Grit Guardian pet that reflects user’s habit performance.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.Pet.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Guardian'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">species</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Dragon'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/grit_guardian/pet/pet.html#Pet.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#grit_guardian.pet.pet.Pet.__init__" title="Link to this definition"></a></dt>
-<dd><p>Initializes a new pet.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> – The pet’s name (default: “Guardian”)</p></li>
-<li><p><strong>species</strong> – The pet’s species (default: “Dragon”)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.Pet.calculate_mood">
-<span class="sig-name descname"><span class="pre">calculate_mood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">habits_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#grit_guardian.pet.pet.PetMood" title="grit_guardian.pet.pet.PetMood"><span class="pre">PetMood</span></a></span></span><a class="reference internal" href="../../_modules/grit_guardian/pet/pet.html#Pet.calculate_mood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#grit_guardian.pet.pet.Pet.calculate_mood" title="Link to this definition"></a></dt>
-<dd><p>Calculates mood based on habit completion data.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>habits_data</strong> – List of dictionaries containing habit analytics
-Each dict should have ‘completion_rate’ and ‘current_streak’ keys</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>PetMood enum value representing the calculated mood</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.Pet.get_ascii_art">
-<span class="sig-name descname"><span class="pre">get_ascii_art</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../_modules/grit_guardian/pet/pet.html#Pet.get_ascii_art"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#grit_guardian.pet.pet.Pet.get_ascii_art" title="Link to this definition"></a></dt>
-<dd><p>Returns ASCII art based on current mood.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>String containing ASCII art representation of the pet</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.Pet.get_mood_message">
-<span class="sig-name descname"><span class="pre">get_mood_message</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../_modules/grit_guardian/pet/pet.html#Pet.get_mood_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#grit_guardian.pet.pet.Pet.get_mood_message" title="Link to this definition"></a></dt>
-<dd><p>Gets a message based on the pet’s current mood.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>String with a mood-appropriate message</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="grit_guardian.pet.pet.Pet.__str__">
-<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../_modules/grit_guardian/pet/pet.html#Pet.__str__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#grit_guardian.pet.pet.Pet.__str__" title="Link to this definition"></a></dt>
-<dd><p>String representation of the pet.</p>
-</dd></dl>
-
+  <section id="grit-guardian-cli-main">
+<h1>grit_guardian.cli.main<a class="headerlink" href="#grit-guardian-cli-main" title="Link to this heading"></a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="grit_guardian.cli.main">
+<span class="sig-prename descclassname"><span class="pre">grit_guardian.cli.</span></span><span class="sig-name descname"><span class="pre">main</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;Group</span> <span class="pre">main&gt;</span></em><a class="headerlink" href="#grit_guardian.cli.main" title="Link to this definition"></a></dt>
+<dd><p>Grit Guardian - CLI habit tracker.</p>
 </dd></dl>
 
 </section>
@@ -556,8 +458,8 @@ Each dict should have ‘completion_rate’ and ‘current_streak’ keys</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="grit_guardian.analytics.analytics.html" class="btn btn-neutral float-left" title="grit_guardian.analytics.analytics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../development/contributing.html" class="btn btn-neutral float-right" title="Contributing Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="grit_guardian.cli.html" class="btn btn-neutral float-left" title="grit_guardian.cli" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="grit_guardian.core.habit_tracker.html" class="btn btn-neutral float-right" title="grit_guardian.core.habit_tracker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
