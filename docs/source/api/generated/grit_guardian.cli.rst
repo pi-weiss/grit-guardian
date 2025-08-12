@@ -4,9 +4,10 @@
 .. automodule:: grit_guardian.cli
 
    
-   .. rubric:: Functions
+.. rubric:: Modules
 
-   .. autosummary::
-   
-      get_tracker
-   
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   main

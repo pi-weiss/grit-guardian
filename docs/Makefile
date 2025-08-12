@@ -31,7 +31,7 @@ livehtml:
 
 # Generate API documentation from source code
 apidoc:
-	poetry run sphinx-apidoc -f -o "$(SOURCEDIR)/api/generated" "../grit_guardian" \
+	poetry run sphinx-apidoc -f -o "$(SOURCEDIR)/api/generated" "../src/grit_guardian" \
 		--separate \
 		--module-first \
 		--no-toc
