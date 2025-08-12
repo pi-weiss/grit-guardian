@@ -1,10 +1,10 @@
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 
-from ..pet.pet import Pet
-from ..persistence.database_manager import DatabaseManager
+from ..pet import Pet
+from ..persistence import DatabaseManager
 from .models import Habit, Periodicity
-from ..analytics.analytics import (
+from ..analytics import (
     calculate_streak,
     calculate_longest_streak,
     get_completion_rate,

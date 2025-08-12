@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING, List, Dict, Any
 # Avoid circular imports
 # https://docs.python.org/3/library/typing.html#typing.TYPE_CHECKING
 if TYPE_CHECKING:
-    from ..core.models import Habit
+    from core import Habit
 
 
 def calculate_streak(completions: List[datetime], periodicity: str) -> int:

@@ -2,12 +2,12 @@ import pytest
 from unittest.mock import Mock
 from datetime import datetime, timedelta
 
-from grit_guardian.core.habit_tracker import (
+from grit_guardian.core import (
     HabitAlreadyExistsError,
     HabitTracker,
     HabitNotFoundError,
 )
-from grit_guardian.core.models import Periodicity
+from grit_guardian.core import Periodicity
 
 
 class TestHabitTracker:

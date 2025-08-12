@@ -1,15 +1,14 @@
 import pytest
 from datetime import datetime, timedelta
 
-from grit_guardian.core.habit_tracker import HabitTracker
-from grit_guardian.persistence.database_manager import DatabaseManager
-from grit_guardian.core.models import Periodicity
-from grit_guardian.analytics.analytics import (
+from grit_guardian.core import HabitTracker, Periodicity
+from grit_guardian.persistence import DatabaseManager
+from grit_guardian.analytics import (
     calculate_streak,
     generate_weekly_view,
     identify_struggled_habits,
 )
-from grit_guardian.pet.pet import Pet, PetMood
+from grit_guardian.pet import Pet, PetMood
 
 
 class TestFullHabitWorkflow:

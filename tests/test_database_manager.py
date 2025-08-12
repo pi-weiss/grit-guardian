@@ -3,7 +3,7 @@ import sqlite3
 import tempfile
 from pathlib import Path
 from datetime import datetime, timedelta
-from grit_guardian.persistence.database_manager import DatabaseManager
+from grit_guardian.persistence import DatabaseManager
 
 
 @pytest.fixture

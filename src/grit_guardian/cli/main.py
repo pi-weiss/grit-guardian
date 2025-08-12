@@ -1,9 +1,9 @@
 import click
 
-from grit_guardian.pet.pet import Pet
-from grit_guardian.core.habit_tracker import HabitTracker
-from grit_guardian.persistence.database_manager import DatabaseManager
-from grit_guardian.analytics.analytics import (
+from ..pet import Pet
+from ..core import HabitTracker
+from ..persistence import DatabaseManager
+from ..analytics import (
     generate_weekly_view,
     identify_struggled_habits,
 )

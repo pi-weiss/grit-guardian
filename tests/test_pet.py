@@ -1,5 +1,5 @@
 import pytest
-from grit_guardian.pet.pet import Pet, PetMood
+from grit_guardian.pet import Pet, PetMood
 
 
 class TestPetMood:

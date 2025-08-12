@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime, timedelta
 
-from grit_guardian.core.models import Habit, Periodicity
+from grit_guardian.core import Habit, Periodicity
 
 
 class TestPeriodicityEnum:

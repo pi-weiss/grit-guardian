@@ -4,9 +4,8 @@ from pathlib import Path
 from unittest.mock import Mock
 from datetime import datetime, timedelta
 
-from grit_guardian.persistence.database_manager import DatabaseManager
-from grit_guardian.core.models import Habit, Periodicity
-from grit_guardian.core.habit_tracker import HabitTracker
+from grit_guardian.persistence import DatabaseManager
+from grit_guardian.core import HabitTracker, Habit, Periodicity
 
 
 @pytest.fixture
@@ -196,19 +195,27 @@ def isolated_cli_runner(monkeypatch, temp_db):
     Returns:
         Click CliRunner instance with isolated environment
     """
+    import sys
     from click.testing import CliRunner
+    from grit_guardian.persistence.database_manager import DatabaseManager
+    from grit_guardian.core import HabitTracker
+    
+    # Import the module to ensure it's loaded, then access via sys.modules
+    import grit_guardian.cli.main
+    cli_main_module = sys.modules['grit_guardian.cli.main']
 
-    # Mock database path for CLI
-    monkeypatch.setattr(
-        "grit_guardian.persistence.database_manager.DatabaseManager._get_default_db_path",
-        lambda self: temp_db,
-    )  # Replace _get_default_db_path instance method
-
-    import grit_guardian.cli
-
-    # Reset tracker to ensure clean state
-    grit_guardian.cli._tracker = None
-
+    # Create a fresh tracker function that always uses the temp database
+    def get_fresh_tracker():
+        """Get a fresh HabitTracker instance for this test."""
+        db_manager = DatabaseManager(db_path=temp_db)
+        return HabitTracker(db_manager)
+    
+    # Replace the get_tracker function entirely
+    monkeypatch.setattr(cli_main_module, "get_tracker", get_fresh_tracker)
+    
+    # Also reset the _tracker global to ensure no cached state
+    cli_main_module._tracker = None
+    
     return CliRunner()
 
 
