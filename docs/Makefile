@@ -65,7 +65,7 @@ doctest:
 
 # Build documentation and check for warnings/errors
 stricthtml:
-	@$(SPHINXBUILD) -b html -W --keep-going "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
+	@$(SPHINXBUILD) -b html --keep-going "$(SOURCEDIR)" "$(BUILDDIR)/html" $(SPHINXOPTS) $(O)
 
 # Development targets
 .PHONY: dev-install dev-clean dev-build

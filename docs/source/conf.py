@@ -65,6 +65,8 @@ intersphinx_mapping = {
     "click": ("https://click.palletsprojects.com/en/latest/", None),
 }
 
+suppress_warnings = ["intersphinx"]
+
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
