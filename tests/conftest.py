@@ -101,6 +101,43 @@ def sample_habit():
 
 
 @pytest.fixture
+def sample_input_habits():
+    """A list of dictionaries with sample habit user input data.
+
+    Returns:
+        List of habit user inputs
+    """
+
+    return [
+        {
+            "name": "Wolf",
+            "task": "Howl 10 minutes at the moon",
+            "periodicity": "daily",
+        },
+        {
+            "name": "Scarecrow",
+            "task": "Stand in the middle of a field for 1 hour",
+            "periodicity": "weekly",
+        },
+        {
+            "name": "Crazy",
+            "task": "Laugh hysterically for 2 seconds for no reason",
+            "periodicity": "weekly",
+        },
+        {
+            "name": "Exercise",
+            "task": "Physical activity for 30 minutes",
+            "periodicity": "daily",
+        },
+        {
+            "name": "Morning Reading",
+            "task": "Read for 15 minutes",
+            "periodicity": "daily",
+        },
+    ]
+
+
+@pytest.fixture
 def sample_habits():
     """Creates multiple sample habits for testing.
 
@@ -146,6 +183,18 @@ def sample_habits():
                 base_date - timedelta(weeks=0, days=2),
                 base_date - timedelta(weeks=1, days=3),
                 base_date - timedelta(weeks=3, days=1),
+            ],
+        ),
+        Habit(
+            id=4,
+            name="Wolf",
+            task="Howl 10 minutes at the moon",
+            periodicity=Periodicity.DAILY,
+            created_at=base_date - timedelta(weeks=6),
+            completions=[
+                base_date - timedelta(weeks=0, days=0),
+                base_date - timedelta(weeks=0, days=1),
+                base_date - timedelta(weeks=0, days=2),
             ],
         ),
     ]
@@ -199,23 +248,24 @@ def isolated_cli_runner(monkeypatch, temp_db):
     from click.testing import CliRunner
     from grit_guardian.persistence.database_manager import DatabaseManager
     from grit_guardian.core import HabitTracker
-    
+
     # Import the module to ensure it's loaded, then access via sys.modules
     import grit_guardian.cli.main
-    cli_main_module = sys.modules['grit_guardian.cli.main']
+
+    cli_main_module = sys.modules["grit_guardian.cli.main"]
 
     # Create a fresh tracker function that always uses the temp database
     def get_fresh_tracker():
         """Get a fresh HabitTracker instance for this test."""
         db_manager = DatabaseManager(db_path=temp_db)
         return HabitTracker(db_manager)
-    
+
     # Replace the get_tracker function entirely
     monkeypatch.setattr(cli_main_module, "get_tracker", get_fresh_tracker)
-    
+
     # Also reset the _tracker global to ensure no cached state
     cli_main_module._tracker = None
-    
+
     return CliRunner()
 
 
