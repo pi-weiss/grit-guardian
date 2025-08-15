@@ -18,7 +18,6 @@ dependencies = [
   "sphinx (>=8.2.3,<9.0.0)",
   "sphinxcontrib-mermaid (>=1.0.0,<2.0.0)",
   "sphinx-copybutton (>=0.5.2,<0.6.0)",
-  "sphinx-autobuild (>=2024.10.3,<2025.0.0)",
 ]
 
 [project.urls]
@@ -37,7 +36,68 @@ packages = [{include = "grit_guardian", from = "src"}]
 pytest = ">=8.2.1,<9.0.0"
 pytest-cov = ">=6.2.1,<7.0.0"
 sphinx-rtd-theme = "^3.0.2"
+sphinx-autobuild = ">=2024.10.3,<2025.0.0"
 
 [tool.poetry.scripts]
 grit-guardian = "grit_guardian.cli:main"
 gg = "grit_guardian.cli:main"
+
+# Pytest configuration
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--cov=grit_guardian",
+    "--cov-report=html",
+    "--cov-report=term-missing",
+    "--cov-report=xml",
+    "--strict-markers",
+    "--strict-config",
+    "-ra"
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests"
+]
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning"
+]
+
+# Coverage configuration
+[tool.coverage.run]
+source = ["grit_guardian"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/migrations/*",
+    "*/venv/*",
+    "*/virtualenv/*"
+]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod"
+]
+ignore_errors = true
+precision = 2
+show_missing = true
+skip_covered = false
+
+[tool.coverage.html]
+directory = "htmlcov"

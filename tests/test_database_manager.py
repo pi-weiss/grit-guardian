@@ -43,29 +43,37 @@ class TestDatabaseManager:
 
     # https://docs.pytest.org/en/stable/how-to/skipping.html#skip
     # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
-    def test_create_habit_success(self, temp_db):
+    def test_create_habit_success(self, temp_db, sample_input_habits):
         """Tests creating a habit successfully."""
+        valid_habit = sample_input_habits[0]
         habit_id = temp_db.create_habit(
-            name="Wolf", task="Howl 10 minutes at the moon", periodicity="daily"
+            name=valid_habit["name"],
+            task=valid_habit["task"],
+            periodicity=valid_habit["periodicity"],
         )
 
         assert isinstance(habit_id, int)
         assert habit_id > 0
 
         # Verify habit was created
-        habit = temp_db.get_habit_by_name("Wolf")
+        habit = temp_db.get_habit_by_name(valid_habit["name"])
         assert habit is not None
-        assert habit["name"] == "Wolf"
-        assert habit["task"] == "Howl 10 minutes at the moon"
-        assert habit["periodicity"] == "daily"
+        assert habit["name"] == valid_habit["name"]
+        assert habit["task"] == valid_habit["task"]
+        assert habit["periodicity"] == valid_habit["periodicity"]
 
     # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
-    def test_create_habit_duplicate_name(self, temp_db):
+    def test_create_habit_duplicate_name(self, temp_db, sample_input_habits):
         """Tests that creating a habit with duplicate name fails."""
-        temp_db.create_habit("Exercise", "Run", "daily")
+        valid_habit = sample_input_habits[0]
+        temp_db.create_habit(
+            valid_habit["name"], valid_habit["task"], valid_habit["periodicity"]
+        )
 
         with pytest.raises(sqlite3.IntegrityError):
-            temp_db.create_habit("Exercise", "Different task", "weekly")
+            temp_db.create_habit(
+                valid_habit["name"], "Different task", valid_habit["periodicity"]
+            )
 
     # @pytest.mark.skip(reason="Full DB logic not yet implemented.")
     def test_create_habit_invalid_periodicity(self, temp_db):
